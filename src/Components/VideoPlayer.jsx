@@ -21,8 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { mobile, tablet } from "../responsive";
 
 import Video1 from "../videos/Video_1.mp4";
-import Video2 from "../videos/Video_2.mp4";
-import Video3 from "../videos/Video_3.mp4";
+
 
 // import audio on icon
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
@@ -64,7 +63,7 @@ const Video = styled.video`
 `;
 
 // video array
-const VideosArray = [Video1, Video2, Video3];
+const VideosArray = [Video1];
 // get random number between 0 and 3 to shoow video
 const randomVideo = Math.floor(Math.random() * 5);
 
@@ -73,7 +72,7 @@ const AudioController = styled.div`
   width: 1.051vw;
   height: 1.051vw;
   position: absolute;
-  left: 7vw;
+  left: 9vw;
   top: 12vh;
   background-color: none;
   opacity: 1;
@@ -121,7 +120,7 @@ const VideoPlayer = () => {
           onClick={() => {
             navigate("/products");
           }}
-          src={VideosArray[randomVideo]}
+          src={Video1}
           autoPlay
           muted={muted}
           loop={true}
