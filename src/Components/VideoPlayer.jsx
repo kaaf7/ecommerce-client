@@ -53,7 +53,6 @@ const Wrapper = styled.div`
 `;
 const Video = styled.video`
   height: 90%;
-  background: #f5f5f5;
 
   cursor: pointer;
   ${mobile({
