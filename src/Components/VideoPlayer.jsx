@@ -37,6 +37,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  background: #f5f5f5;
   height: 110vh;
   border-bottom: 1px solid lightgray;
   ${mobile({
@@ -74,7 +75,7 @@ const AudioController = styled.div`
   position: absolute;
   left: 7vw;
   top: 12vh;
-  background-color: #f2f2f2;
+  background-color: none;
   opacity: 1;
   display: flex;
   border-radius: 50%;
