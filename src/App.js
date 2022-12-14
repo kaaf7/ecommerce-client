@@ -18,17 +18,17 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="products/:id" element={<ProductPage />} />
-        <Route exact path="/products" element={<Products />} />
-        <Route exact path="products/men" element={<Products />} />
-        <Route exact path="/products/women" element={<Products />} />
-        <Route exact path="/products/favorite" element={<Favorites />} />
-        <Route exact path="/products/new" element={<Products />} />
-        <Route exact path="/cart/:id" element={<Cart />} />
-        <Route exact path="/login" element={user ? <Home /> : <Login />} />
+        <Route exact path="https://ecomm-frontend-client.onrender.com" element={<Home />} />
+        <Route path="/products/:id" element={<ProductPage />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/men" element={<Products />} />
+        <Route path="/products/women" element={<Products />} />
+        <Route path="/products/favorite" element={<Favorites />} />
+        <Route path="/products/new" element={<Products />} />
+        <Route path="/cart/:id" element={<Cart />} />
+        <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route
-          exact path="/register"
+          path="/register"
           element={registeration ? <Products /> : <Register />}
         />
       </Routes>
