@@ -37,7 +37,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: #f5f5f5;
   height: 110vh;
   border-bottom: 1px solid lightgray;
   ${mobile({
@@ -54,6 +53,8 @@ const Wrapper = styled.div`
 `;
 const Video = styled.video`
   height: 90%;
+  background: #f5f5f5;
+
   cursor: pointer;
   ${mobile({
     width: "100%",
