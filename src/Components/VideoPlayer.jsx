@@ -74,7 +74,7 @@ const AudioController = styled.div`
   position: absolute;
   left: 7vw;
   top: 12vh;
-  background-color: none;
+  background-color: #f2f2f2;
   opacity: 1;
   display: flex;
   border-radius: 50%;
