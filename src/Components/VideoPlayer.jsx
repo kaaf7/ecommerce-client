@@ -65,8 +65,8 @@ const Video = styled.video`
 // video array
 const VideosArray = [
   "https://drive.google.com/file/d/1TJw0kj-6nZ3PYBR0uInWyPvTqOYF38si/view?usp=sharing",
-  Video2,
-  Video3,
+  "https://drive.google.com/file/d/1mKGshdW1H6CYXs8NUKDsKOVs0goRJdrG/view?usp=sharing",
+  "https://drive.google.com/file/d/1blPgNT9bRKVq2RY3XC-cEOSUPK3U2uWM/view?usp=sharing",
 ];
 // get random number between 0 and 3 to shoow video
 const randomVideo = Math.floor(Math.random() * 5);
