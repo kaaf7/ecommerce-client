@@ -24,7 +24,6 @@ import Video1 from "../videos/Video_1.mp4";
 import Video2 from "../videos/Video_2.mp4";
 import Video3 from "../videos/Video_3.mp4";
 
-
 // import audio on icon
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 
@@ -64,7 +63,11 @@ const Video = styled.video`
 `;
 
 // video array
-const VideosArray = [Video1, Video2, Video3];
+const VideosArray = [
+  "https://drive.google.com/file/d/1TJw0kj-6nZ3PYBR0uInWyPvTqOYF38si/view?usp=sharing",
+  Video2,
+  Video3,
+];
 // get random number between 0 and 3 to shoow video
 const randomVideo = Math.floor(Math.random() * 5);
 
