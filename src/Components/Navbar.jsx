@@ -504,7 +504,9 @@ export const Navbar = () => {
             <Badge
               sx={{ transform: "scale(.9)", size: "0.631vw" }}
               onClick={() => {
-                NavigateDir(`/cart/:${userId}`);
+                user
+                  ? NavigateDir(`/cart/:${userId}`)
+                  : NavigateDir(`/cart/:guest`);
               }}
               badgeContent={cartQuantity}
               color="error"
@@ -544,8 +546,8 @@ export const Navbar = () => {
               style={{ color: "grey" }}
               onClick={(e) => {
                 e.preventDefault();
-               // localStorage.clear();
-                localStorage.removeItem('persist:root')
+                // localStorage.clear();
+                localStorage.removeItem("persist:root");
                 window.location.reload();
               }}
             >
