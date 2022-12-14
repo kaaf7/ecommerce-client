@@ -31,11 +31,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "start-js": "react-scripts start"
+    "dev": "react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +48,7 @@
       "not dead",
       "not op_mini all"
     ],
+    "homepage": "https://ecomm-frontend-client.onrender.com",
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
