@@ -158,7 +158,7 @@ const Cart = () => {
     <Container>
       <Navbar />
 
-      {cartProducts ? (
+      {cartProducts.length > 0 ? (
         <Wrapper>
           {/* mapp all purchased products into CartItem component*/}
           <PurchasedItems>
