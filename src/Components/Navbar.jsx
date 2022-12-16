@@ -436,10 +436,10 @@ export const Navbar = () => {
             <SearchContainer>
               <SearchInput
                 onChange={(e) => {
-                  setSearchedProducts(e.target.value);
+                  setSearchedProducts("  "+e.target.value);
                 }}
                 type="text"
-                input={"  "+searchedProduct}
+                input={searchedProduct}
                 placeholder="Search.."
               ></SearchInput>
 
