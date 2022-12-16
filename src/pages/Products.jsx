@@ -132,9 +132,9 @@ const Products = () => {
         )}
         <Filter onChange={handleSort}>
           <option disabled>PRICE</option>
-          <option value="ascending">ASCENDING</option>
+          <option value="{ascending}">{...sort}</option>
           <option selected value="descending">
-            DESCENDING
+            {sort.toUpperCase()}
           </option>
         </Filter>
       </FilterWrapper>
