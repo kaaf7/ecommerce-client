@@ -69,6 +69,7 @@ const ProductList = ({ filters, cat, sort }) => {
             ? `/products/allproducts?category=${cat}`
             : `/products/allproducts`
         );
+        // sort product by newest product created
         const ProductArray = res.data.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1)
         setProducts(ProductArray);
       } catch (err) {}
