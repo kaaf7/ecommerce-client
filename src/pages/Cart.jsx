@@ -150,6 +150,7 @@ const EmptyCartSign = styled.p`
   font-size: 1.576vw;
   font-family: "Lexend", sans-serif;
   color: #c40a0af5;
+  font-weight: 200;
   justify-content: center;
 `;
 
@@ -200,8 +201,8 @@ const Cart = () => {
         </Wrapper>
       ) : (
         <EmptyCartSign>
-          <SentimentVeryDissatisfiedOutlinedIcon />
           CART IS EMPTY
+          <SentimentVeryDissatisfiedOutlinedIcon />
         </EmptyCartSign>
       )}
     </Container>
