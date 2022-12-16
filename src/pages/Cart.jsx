@@ -9,6 +9,11 @@ import React from "react";
 // import Styled Components
 import styled from "styled-components";
 
+// import cart Icon from material UI
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+
+import SentimentVeryDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
+
 // import responsive Settings from responsive.js
 import { mobile, tablet } from "../responsive";
 // import cartItem component that will display purchased products
@@ -140,8 +145,10 @@ const OrderTitle = styled.h2`
   })}
 `;
 
-const EmptyCartSign = styled.h2`
+const EmptyCartSign = styled.h3`
   font-family: "Lendex", sans-serif;
+  display: flex;
+  justify-content: center;
 `;
 
 const Cart = () => {
@@ -190,7 +197,10 @@ const Cart = () => {
           )}
         </Wrapper>
       ) : (
-        <EmptyCartSign>CART IS EMPTY</EmptyCartSign>
+        <EmptyCartSign>
+          <SentimentVeryDissatisfiedOutlinedIcon />
+          CART IS EMPTY
+        </EmptyCartSign>
       )}
     </Container>
   );
