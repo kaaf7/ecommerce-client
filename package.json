@@ -33,9 +33,10 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "react-scripts start",
-    "build": "react-scripts start build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom"
   },
+  "homepage": ".",
   "eslintConfig": {
     "extends": [
       "react-app",
