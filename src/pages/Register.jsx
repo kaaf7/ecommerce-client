@@ -90,8 +90,8 @@ const Register = () => {
 
   // handleRegister function that call function by and dispatch email,username, and password
   const handleRegister = (e) => {
+    e.preventDefault();
     if (username && password && email) {
-      e.preventDefault();
       register(dispatch, { email, username, password });
     } else {
       setError(true);
