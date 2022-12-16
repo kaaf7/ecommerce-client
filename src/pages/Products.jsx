@@ -119,16 +119,20 @@ const Products = () => {
           <option>T-SHIRTS</option>
           <option>TROUSERS</option>
         </Filter>
-        <Filter name="category">
-          <option selected disabled>
-            CATEGORY
-          </option>
-          {category ? (
+        {!category && (
+          <Filter name="category" onChange={handleFilters}>
+            <option selected disabled>
+              CATEGORY
+            </option>
+            <option>WOMEN</option>
+            <option>MEN</option>
+          </Filter>
+        )}
+        {category && (
+          <Filter name="category">
             <option>{category.toUpperCase()}</option>
-          ) : (
-            <option>no category</option>
-          )}
-        </Filter>
+          </Filter>
+        )}
         <Filter onChange={handleSort}>
           <option selected disabled>
             PRICE
