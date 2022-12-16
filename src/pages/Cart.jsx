@@ -147,7 +147,7 @@ const OrderTitle = styled.h2`
 
 const EmptyCartSign = styled.p`
   display: flex;
-  font-size: 1.576vw;
+  font-size: 3vw;
   font-family: "Lexend", sans-serif;
   color: #c40a0af5;
   font-weight: 200;
