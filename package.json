@@ -36,7 +36,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom"
   },
-  "homepage": ".",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -56,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@webpack-cli/generators": "^3.0.1",
     "style-loader": "^2.0.0"
   }
 }
