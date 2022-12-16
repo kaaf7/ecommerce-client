@@ -263,7 +263,7 @@ const SearchInput = styled.input`
   font-weight: 300;
   font-size: 14px;
   color: #434343;
-  padding-left: .3vw;
+  padding-left: 0px;
   border-radius: 5px;
   width: 100%;
   font-family: "Lexend", sans-serif;
@@ -439,7 +439,7 @@ export const Navbar = () => {
                   setSearchedProducts(e.target.value);
                 }}
                 type="text"
-                input={searchedProduct}
+                input={"  "+searchedProduct}
                 placeholder="Search.."
               ></SearchInput>
 
