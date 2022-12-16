@@ -96,8 +96,9 @@ const Products = () => {
   return (
     <Container>
       <Navbar></Navbar>
-      <FilterListOutlinedIcon />
+
       <FilterWrapper>
+        <FilterListOutlinedIcon />
         <Filter name="colors" id="colors" onChange={handleFilters}>
           <option selected disabled>
             COLOR
