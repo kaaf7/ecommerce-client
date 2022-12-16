@@ -96,11 +96,11 @@ const ProductList = ({ filters, cat, sort }) => {
   useEffect(() => {
     if (sort === "descending") {
       setFilteredProducts((products) =>
-        [...products].sort((a, b) => b.price - a.price)
+        [...products].sort((a, b) => (a.price > b.price ? -1 : 1))
       );
     } else {
       setFilteredProducts((products) =>
-        [...products].sort((a, b) => a.price - b.price)
+        [...products].sort((a, b) => (a.price < b.price ? -1 : 1))
       );
     }
   }, [sort]);
