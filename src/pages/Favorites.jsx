@@ -15,6 +15,8 @@ import FavoriteCard from "../Components/FavoriteCard";
 //import responsive Settings from responsive.js
 import { mobile, tablet } from "../responsive";
 
+import HeartBrokenOutlinedIcon from "@mui/icons-material/HeartBrokenOutlined";
+
 const Container = styled.div``;
 
 // import Wrapper to wrap all components
@@ -42,6 +44,15 @@ const Wrapper = styled.div`
   })}
 `;
 
+const EmptyFavorites = styled.p`
+  display: flex;
+  font-size: 2.5vw;
+  font-family: "Lexend", sans-serif;
+  color: #c40a0af5;
+  font-weight: 200;
+  justify-content: center;
+`;
+
 const Favorites = () => {
   // get favorite state from favorite slice
   const favorites = useSelector((state) => state.favorite?.favorites);
@@ -49,12 +60,18 @@ const Favorites = () => {
   return (
     <Container>
       <Navbar />
-      <Wrapper>
-        {/*map favorite items into FavoriteCard*/}
-        {favorites?.map((favorite) => (
-          <FavoriteCard key={favorite._id} product={favorite} />
-        ))}
-      </Wrapper>
+      {favorites.length > 0 ? (
+        <Wrapper>
+          {/*map favorite items into FavoriteCard*/}
+          {favorites?.map((favorite) => (
+            <FavoriteCard key={favorite._id} product={favorite} />
+          ))}
+        </Wrapper>
+      ) : (
+        <EmptyFavorites>
+          FAVORITES IS EMPTY<HeartBrokenOutlinedIcon />
+        </EmptyFavorites>
+      )}
     </Container>
   );
 };
