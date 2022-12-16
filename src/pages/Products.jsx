@@ -123,8 +123,12 @@ const Products = () => {
           <option selected disabled>
             CATEGORY
           </option>
-          {category && <option>{category.toUpperCase}</option>}
-          {!category && <option>no category</option>}
+          {category ? (
+            <option>{category.toUpperCase()}</option>
+          ) : (
+            <option>no category</option>
+          )}
+          }
         </Filter>
         <Filter onChange={handleSort}>
           <option selected disabled>
