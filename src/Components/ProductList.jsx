@@ -68,9 +68,9 @@ const ProductList = ({ filters, cat, sort }) => {
             : `/products/allproducts`
         );
         // sort product by newest product created and then sort by higher price first
-        const ProductArray = res.data.sort((a, b) =>
-          a.createdAt > b.createdAt ? -1 : 1 && a.price > b.price
-        );
+        const ProductArray = res.data
+          .sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
+          .sort((a, b) => (a.price > b.price ? -1 : 1));
 
         setProducts(ProductArray);
       } catch (err) {}
