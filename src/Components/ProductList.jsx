@@ -55,8 +55,6 @@ const ProductList = ({ filters, cat, sort }) => {
   /* useState hook to set products*/
   const [products, setProducts] = useState([]);
 
- 
-
   // filtered products
   const [filteredProducts, setFilteredProducts] = useState([]);
 
