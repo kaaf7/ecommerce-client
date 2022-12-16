@@ -70,7 +70,7 @@ const Products = () => {
   // set filter object
   const [filters, setFilters] = useState({});
   // set sort as ascending
-  const [sort, setSort] = useState("ascending");
+  const [sort, setSort] = useState("descending");
   // get location to determine category
   const location = useLocation();
   // get cateogory using location
