@@ -128,7 +128,6 @@ const Products = () => {
           ) : (
             <option>no category</option>
           )}
-          }
         </Filter>
         <Filter onChange={handleSort}>
           <option selected disabled>
