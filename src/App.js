@@ -7,6 +7,7 @@ import Cart from "./pages/Cart";
 import Register from "./pages/Register";
 import Favorites from "./pages/Favorites";
 import { useSelector } from "react-redux";
+import ScrollUp from "./Components/ScrollUp";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollUp />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/products/:id" element={<ProductPage />} />
