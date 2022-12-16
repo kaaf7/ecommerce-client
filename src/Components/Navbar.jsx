@@ -263,7 +263,8 @@ const SearchInput = styled.input`
   font-weight: 300;
   font-size: 14px;
   color: #434343;
-  padding-left: 0px;
+  padding-left: 1vw;
+  margin-right: 1vw;
   border-radius: 5px;
   width: 100%;
   font-family: "Lexend", sans-serif;
@@ -276,7 +277,7 @@ const SearchInput = styled.input`
 
 // Search results container
 const SearchResultContainer = styled.li`
-  width: 47%;
+  width: 48%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -375,7 +376,7 @@ export const Navbar = () => {
     } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
       dispatch(updateFavorite(favorites));
     }
-  }, []);
+  }, [productAdded, productRemoved, favoriteAdded, favoriteRemoved]);
 
   // NavigateDir depends on custome directory*/
   const NavigateDir = (directory) => {
@@ -436,7 +437,7 @@ export const Navbar = () => {
             <SearchContainer>
               <SearchInput
                 onChange={(e) => {
-                  setSearchedProducts("  "+e.target.value);
+                  setSearchedProducts(e.target.value);
                 }}
                 type="text"
                 input={searchedProduct}
