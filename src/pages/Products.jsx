@@ -105,7 +105,12 @@ const Products = () => {
           <option>WHITE</option>
           <option>GREY</option>
         </Filter>
-        <Filter defaultValue={"DEFAULT"} name="category" id="style" onChange={handleFilters}>
+        <Filter
+          defaultValue={"DEFAULT"}
+          name="category"
+          id="style"
+          onChange={handleFilters}
+        >
           <option value="DEFAULT" disabled>
             STYLE
           </option>
@@ -119,8 +124,7 @@ const Products = () => {
             CATEGORY
           </option>
 
-          {<option>WOMEN</option>}
-          <option>MEN</option>
+          {(category = "women" ? <option>WOMEN</option> : <option>MEN</option>)}
         </Filter>
         <Filter onChange={handleSort}>
           <option selected disabled>
