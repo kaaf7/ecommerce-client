@@ -45,7 +45,7 @@ const FilterWrapper = styled.div`
   align-items: center;
   gap: 3vw;
   margin-left: 7.882vw;
-  margin-right: 7.882vw;
+  margin-right: 9vw;
   margin-top: 9vh;
   position: relative;
   height: 10vh;
