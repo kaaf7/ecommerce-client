@@ -17,7 +17,9 @@ import { mobile, tablet } from "../responsive";
 
 import HeartBrokenOutlinedIcon from "@mui/icons-material/HeartBrokenOutlined";
 
-const Container = styled.div``;
+const Container = styled.div`
+  justify-content: center;
+`;
 
 // import Wrapper to wrap all components
 const Wrapper = styled.div`
@@ -60,19 +62,18 @@ const Favorites = () => {
   return (
     <Container>
       <Navbar />
-      <Wrapper>
-        {/*map favorite items into FavoriteCard*/}
-        {favorites.length > 0 ? (
-          favorites?.map((favorite) => (
+      {favorites.length > 0 ? (
+        <Wrapper>
+          {/*map favorite items into FavoriteCard*/}
+          {favorites?.map((favorite) => (
             <FavoriteCard key={favorite._id} product={favorite} />
-          ))
-        ) : (
-          <EmptyFavorites>
-            FAVORITES IS EMPTY
-            <HeartBrokenOutlinedIcon />
-          </EmptyFavorites>
-        )}
-      </Wrapper>
+          ))}
+        </Wrapper>
+      ) : (
+        <EmptyFavorites>
+          FAVORITES IS EMPTY <HeartBrokenOutlinedIcon />
+        </EmptyFavorites>
+      )}
     </Container>
   );
 };
