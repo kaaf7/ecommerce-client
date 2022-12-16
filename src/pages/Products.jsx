@@ -119,7 +119,7 @@ const Products = () => {
           <option>T-SHIRTS</option>
           <option>TROUSERS</option>
         </Filter>
-        <Filter name="category" onChange={handleFilters}>
+        <Filter name="category">
           <option selected disabled>
             CATEGORY
           </option>
