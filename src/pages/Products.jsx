@@ -73,7 +73,7 @@ const Products = () => {
   // set filter object
   const [filters, setFilters] = useState({});
   // set sort as ascending
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("descending");
   // get location to determine category
   const location = useLocation();
   // get cateogory using location
@@ -132,10 +132,19 @@ const Products = () => {
         )}
         <Filter onChange={handleSort}>
           <option disabled>PRICE</option>
-          <option value="ascending">{...sort}</option>
-          <option selected value="descending">
-            {sort.toUpperCase()}
-          </option>
+          <option value="ascending">{sort.toUpperCase()}</option>
+          {
+            (sort = "ascending" ? (
+              <option selected value="descending">
+                DESCENDING
+              </option>
+            ) : (
+              <option selected value="ascending">
+                ASCENDING
+              </option>
+            ))
+          }{" "}
+          :
         </Filter>
       </FilterWrapper>
       <ProductList cat={category} filters={filters} sort={sort} />
