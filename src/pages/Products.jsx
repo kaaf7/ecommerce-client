@@ -119,15 +119,6 @@ const Products = () => {
           <option>T-SHIRTS</option>
           <option>TROUSERS</option>
         </Filter>
-        {!category && (
-          <Filter name="category" onChange={handleFilters}>
-            <option selected disabled>
-              CATEGORY
-            </option>
-            <option>WOMEN</option>
-            <option>MEN</option>
-          </Filter>
-        )}
         {category && (
           <Filter name="category">
             <option selected="selected" value={category}>
