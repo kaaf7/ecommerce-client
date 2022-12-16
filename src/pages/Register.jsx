@@ -74,16 +74,28 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+// error text shows when sign up fails
+const ErrorText = styled.p`
+  color: red;
+  font-family: "Lexend", sans-serif;
+  margin-top: 0;
+`;
+
 const Register = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   // handleRegister function that call function by and dispatch email,username, and password
   const handleRegister = (e) => {
-    e.preventDefault();
-    register(dispatch, { email, username, password });
+    if (username && password && email) {
+      e.preventDefault();
+      register(dispatch, { email, username, password });
+    } else {
+      setError(true);
+    }
   };
 
   return (
@@ -116,6 +128,7 @@ const Register = () => {
           </Agreement>
           <Button onClick={handleRegister}>CREATE</Button>
         </Form>
+        {error && <ErrorText>WRONG CREDENTIALS</ErrorText>}
       </Wrapper>
     </Container>
   );
