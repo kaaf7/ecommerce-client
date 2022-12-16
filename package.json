@@ -42,7 +42,6 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://ecomm-frontend-client.onrender.com",
   "browserslist": {
     "production": [
       ">0.2%",
