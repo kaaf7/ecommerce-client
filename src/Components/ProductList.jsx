@@ -14,8 +14,6 @@ import styled from "styled-components";
 // import useState and useEffect Hook from React
 import { useState, useEffect } from "react";
 
-
-
 // import product Card for product image and infos
 import ProductCard from "./ProductCard";
 
@@ -69,8 +67,11 @@ const ProductList = ({ filters, cat, sort }) => {
             ? `/products/allproducts?category=${cat}`
             : `/products/allproducts`
         );
-        // sort product by newest product created
-        const ProductArray = res.data.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1)
+        // sort product by newest product created and then sort by higher price first
+        const ProductArray = res.data.sort((a, b) =>
+          a.createdAt > b.createdAt ? -1 : 1 && b.price - a.price
+        );
+
         setProducts(ProductArray);
       } catch (err) {}
     };
