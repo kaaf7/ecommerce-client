@@ -120,7 +120,7 @@ const Products = () => {
           <option>TROUSERS</option>
         </Filter>
         {!category && (
-          <Filter name="category">
+          <Filter name="category" onChange={handleFilters}>
             <option selected disabled>
               CATEGORY
             </option>
@@ -129,8 +129,10 @@ const Products = () => {
           </Filter>
         )}
         {category && (
-          <Filter name="category">
-            <option>{category.toUpperCase()}</option>
+          <Filter name={category.toUpperCase()}>
+            <option selected="selected" value={category}>
+              {category.toUpperCase()}
+            </option>
           </Filter>
         )}
         <Filter onChange={handleSort}>
