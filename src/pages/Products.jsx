@@ -33,8 +33,7 @@ import ProductList from "../Components/ProductList";
 // import Filter icon
 import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 
-// import scrollUp component that will scroll up wheneve paghe changes
-import ScrollUp from "../Components/ScrollUp";
+
 
 // all components container
 const Container = styled.div`
@@ -143,7 +142,6 @@ const Products = () => {
       <Board></Board>
       <Explore></Explore>
       <Footer></Footer>
-      <ScrollUp />
     </Container>
   );
 };
