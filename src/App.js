@@ -18,6 +18,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollUp />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/products/:id" element={<ProductPage />} />
