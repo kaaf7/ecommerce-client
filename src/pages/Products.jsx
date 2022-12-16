@@ -30,6 +30,9 @@ import { mobile } from "../responsive";
 // import productList that will contain all products
 import ProductList from "../Components/ProductList";
 
+// import Filter icon
+import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
+
 // all components container
 const Container = styled.div`
   background-color: #ffffff;
@@ -93,6 +96,7 @@ const Products = () => {
   return (
     <Container>
       <Navbar></Navbar>
+      <FilterListOutlinedIcon />
       <FilterWrapper>
         <Filter name="colors" id="colors" onChange={handleFilters}>
           <option selected disabled>
@@ -127,9 +131,7 @@ const Products = () => {
           </Filter>
         )}
         <Filter onChange={handleSort}>
-          <option  disabled>
-            PRICE
-          </option>
+          <option disabled>PRICE</option>
           <option value="ascending">ASCENDING</option>
           <option selected value="descending">
             DESCENDING
