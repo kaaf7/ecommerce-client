@@ -263,7 +263,7 @@ const SearchInput = styled.input`
   font-weight: 300;
   font-size: 14px;
   color: #434343;
-  padding-left: 1vw;
+  padding-left: .1vw;
   border-radius: 5px;
   width: 100%;
   font-family: "Lexend", sans-serif;
