@@ -129,8 +129,8 @@ const Products = () => {
           </Filter>
         )}
         {category && (
-          <Filter name="category" onChange={handleFilters}>
-            <option>{category.toUpperCase()}</option>
+          <Filter name="category">
+            <option selected>{category.toUpperCase()}</option>
           </Filter>
         )}
         <Filter onChange={handleSort}>
