@@ -90,7 +90,7 @@ const Products = () => {
   };
   // handleSort function will set sort according to input value
   const handleSort = (e) => {
-    setSort(e.target.value);
+    setSort(...e.target.value);
   };
 
   return (
