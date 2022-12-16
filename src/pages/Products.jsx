@@ -134,7 +134,7 @@ const Products = () => {
           <option disabled>PRICE</option>
           <option value="ascending">{sort.toUpperCase()}</option>
           {
-            (sort = "ascending" ? (
+            (sort === "ascending" ? (
               <option selected value="descending">
                 DESCENDING
               </option>
