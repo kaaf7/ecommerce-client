@@ -129,7 +129,7 @@ const Products = () => {
           </Filter>
         )}
         {category && (
-          <Filter name={category.toUpperCase()}>
+          <Filter name="category">
             <option selected="selected" value={category}>
               {category.toUpperCase()}
             </option>
