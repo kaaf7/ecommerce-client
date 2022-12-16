@@ -277,7 +277,7 @@ const SearchInput = styled.input`
 
 // Search results container
 const SearchResultContainer = styled.li`
-  width: 46%;
+  width: 47%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
