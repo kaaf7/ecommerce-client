@@ -12,7 +12,7 @@ import styled from "styled-components";
 // import cart Icon from material UI
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 
-import SentimentVeryDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
+import SentimentVeryDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentVeryDissatisfiedOutlined";
 
 // import responsive Settings from responsive.js
 import { mobile, tablet } from "../responsive";
@@ -145,9 +145,11 @@ const OrderTitle = styled.h2`
   })}
 `;
 
-const EmptyCartSign = styled.h3`
-  font-family: "Lendex", sans-serif;
+const EmptyCartSign = styled.p`
   display: flex;
+  font-size: 1.576vw;
+  font-family: "Lexend", sans-serif;
+  color: #c40a0af5;
   justify-content: center;
 `;
 
