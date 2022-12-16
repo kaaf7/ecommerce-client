@@ -93,13 +93,13 @@ const ProductList = ({ filters, cat, sort }) => {
 
   // useEffect to sort Products according Ascending and Descending price
   useEffect(() => {
-    if (sort === "ascending") {
+    if (sort === "descending") {
       setFilteredProducts((products) =>
-        [...products].sort((a, b) => a.price - b.price)
+        [...products].sort((a, b) => b.price - a.price)
       );
     } else {
       setFilteredProducts((products) =>
-        [...products].sort((a, b) => b.price - a.price)
+        [...products].sort((a, b) => a.price - b.price)
       );
     }
   }, [sort]);
