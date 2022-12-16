@@ -43,7 +43,7 @@ const FilterWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 5vw;
+  gap: 3vw;
   margin-left: 7.882vw;
   margin-right: 7.882vw;
   margin-top: 9vh;
@@ -73,7 +73,7 @@ const Products = () => {
   // set filter object
   const [filters, setFilters] = useState({});
   // set sort as ascending
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("descending");
   // get location to determine category
   const location = useLocation();
   // get cateogory using location
@@ -90,13 +90,12 @@ const Products = () => {
   };
   // handleSort function will set sort according to input value
   const handleSort = (e) => {
-    setSort(...e.target.value);
+    setSort(e.target.value);
   };
 
   return (
     <Container>
       <Navbar></Navbar>
-
       <FilterWrapper>
         <FilterListOutlinedIcon />
         <Filter name="colors" id="colors" onChange={handleFilters}>
@@ -133,9 +132,9 @@ const Products = () => {
         )}
         <Filter onChange={handleSort}>
           <option disabled>PRICE</option>
-          <option value="ascending">ASCENDING</option>
+          <option value="ascending">{...sort.toUpperCase()}</option>
           <option selected value="descending">
-            DESCENDING
+            {sort.toUpperCase()}
           </option>
         </Filter>
       </FilterWrapper>
