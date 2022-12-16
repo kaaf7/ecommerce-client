@@ -266,7 +266,7 @@ const SearchInput = styled.input`
   padding-left: 1vw;
   margin-right: 1vw;
   border-radius: 5px;
-  width: 99%;
+  width: 98%;
   font-family: "Lexend", sans-serif;
   ${mobile({ display: "none" })}
   &:focus {
@@ -277,7 +277,7 @@ const SearchInput = styled.input`
 
 // Search results container
 const SearchResultContainer = styled.li`
-  width: 47%;
+  width: 46%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
