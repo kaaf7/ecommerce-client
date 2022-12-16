@@ -33,7 +33,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "react-scripts start",
-    "build": "webpack --config webpack.config.js",
+    "build": "react-scripts start build",
     "test": "react-scripts test --env=jsdom"
   },
   "eslintConfig": {
@@ -42,13 +42,13 @@
       "react-app/jest"
     ]
   },
+  "homepage": ".",
   "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
-
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
