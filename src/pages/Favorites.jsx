@@ -60,18 +60,19 @@ const Favorites = () => {
   return (
     <Container>
       <Navbar />
-      {favorites.length > 0 ? (
-        <Wrapper>
-          {/*map favorite items into FavoriteCard*/}
-          {favorites?.map((favorite) => (
+      <Wrapper>
+        {/*map favorite items into FavoriteCard*/}
+        {favorites.length > 0 ? (
+          favorites?.map((favorite) => (
             <FavoriteCard key={favorite._id} product={favorite} />
-          ))}
-        </Wrapper>
-      ) : (
-        <EmptyFavorites>
-          FAVORITES IS EMPTY<HeartBrokenOutlinedIcon />
-        </EmptyFavorites>
-      )}
+          ))
+        ) : (
+          <EmptyFavorites>
+            FAVORITES IS EMPTY
+            <HeartBrokenOutlinedIcon />
+          </EmptyFavorites>
+        )}
+      </Wrapper>
     </Container>
   );
 };
