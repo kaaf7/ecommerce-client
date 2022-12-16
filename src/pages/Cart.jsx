@@ -10,7 +10,7 @@ import React from "react";
 import styled from "styled-components";
 
 // import responsive Settings from responsive.js
-import { mobile,tablet } from "../responsive";
+import { mobile, tablet } from "../responsive";
 // import cartItem component that will display purchased products
 
 import CartItem from "../Components/CartItem";
@@ -53,7 +53,7 @@ const PurchasedItems = styled.div`
     display: "flex",
     flexDirection: "column",
   })}
-   ${tablet({
+  ${tablet({
     display: "flex",
     flexDirection: "column",
   })}
@@ -62,13 +62,13 @@ const PurchasedItems = styled.div`
 const Text = styled.p`
   font-weight: 500;
   font-family: "Lendex", sans-serif;
-  margin-top: .1vh;
-  
+  margin-top: 0.1vh;
+
   ${mobile({
     fontSize: "1.5vw",
     flexDirection: "column",
   })}
-  
+
   ${tablet({
     fontSize: "1.5vw",
     flexDirection: "column",
@@ -90,7 +90,7 @@ const PurchaseButton = styled.button`
   ${mobile({
     fontSize: "2vw",
   })}
-   ${tablet({
+  ${tablet({
     fontSize: "2vw",
   })}
 `;
@@ -140,6 +140,10 @@ const OrderTitle = styled.h2`
   })}
 `;
 
+const EmptyCartSign = styled.h2`
+  font-family: "Lendex", sans-serif;
+`;
+
 const Cart = () => {
   // get cart state from redux Cart Slice
   const cart = useSelector((state) => state.cart);
@@ -153,7 +157,8 @@ const Cart = () => {
   return (
     <Container>
       <Navbar />
-      {
+
+      {cartProducts ? (
         <Wrapper>
           {/* mapp all purchased products into CartItem component*/}
           <PurchasedItems>
@@ -184,7 +189,9 @@ const Cart = () => {
             </PurchaseForm>
           )}
         </Wrapper>
-      }
+      ) : (
+        <EmptyCartSign>CART IS EMPTY</EmptyCartSign>
+      )}
     </Container>
   );
 };
