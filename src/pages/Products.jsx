@@ -33,7 +33,7 @@ import ProductList from "../Components/ProductList";
 // import Filter icon
 import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 
-
+import { useEffect } from "react";
 
 // all components container
 const Container = styled.div`
@@ -94,6 +94,13 @@ const Products = () => {
   const handleSort = (e) => {
     setSort(e.target.value);
   };
+
+  useEffect(() => {
+    const handleReload = () => {
+      location.reload();
+    };
+    handleReload();
+  }, [location]);
 
   return (
     <Container>
