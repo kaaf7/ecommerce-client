@@ -91,6 +91,7 @@ const Login = () => {
   const navigate = useNavigate();
   // login error state
   const loginError = useSelector((state) => state.user.error);
+  const isFetching = useSelector((state) => state.user.isFetching);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -121,7 +122,9 @@ const Login = () => {
             }}
           />
           <Button onClick={handleLogin}>LOGIN</Button>
-          {loginError && <ErrorText>WRONG USERNAME OR PASSWORD</ErrorText>}
+          {!isFetching && loginError && (
+            <ErrorText>WRONG USERNAME OR PASSWORD</ErrorText>
+          )}
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link
             onClick={() => {
