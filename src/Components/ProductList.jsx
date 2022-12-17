@@ -95,11 +95,11 @@ const ProductList = ({ filters, cat, sort }) => {
   // useEffect to sort Products according Ascending and Descending price
   useEffect(() => {
     if (sort === "descending") {
-      setFilteredProducts((products) =>
+      setProducts((products) =>
         [...products].sort((a, b) => (a.price > b.price ? -1 : 1))
       );
     } else {
-      setFilteredProducts((products) =>
+      setProducts((products) =>
         [...products].sort((a, b) => (a.price < b.price ? -1 : 1))
       );
     }
