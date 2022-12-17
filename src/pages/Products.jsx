@@ -97,7 +97,7 @@ const Products = () => {
 
   useEffect(() => {
     const handleReload = () => {
-      location.reload();
+      window.location.reload();
     };
     handleReload();
   }, [location]);
