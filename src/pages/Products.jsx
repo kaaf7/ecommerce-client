@@ -95,13 +95,7 @@ const Products = () => {
     setSort(e.target.value);
   };
 
-  useEffect(() => {
-    const handleReload = () => {
-      window.location.reload();
-    };
-    handleReload();
-  }, [location]);
-
+  
   return (
     <Container>
       <Navbar></Navbar>
