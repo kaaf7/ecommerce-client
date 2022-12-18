@@ -31,6 +31,8 @@ import { publicRequest } from "../services";
 // import unique id uuid
 import { v4 as uuidv4 } from "uuid";
 
+
+
 // all components container
 const Container = styled.div`
   height: 100vh;
@@ -260,7 +262,6 @@ const ProductDescription = styled.p`
 const ProductPage = () => {
   // get location
   const location = useLocation();
-
   // get product id
   const productId = location.pathname.split("/")[2];
   // set product according to the response
@@ -273,6 +274,8 @@ const ProductPage = () => {
   const [mainImage, setMainImage] = useState("");
   // dispatch to call redux reducers
   const dispatch = useDispatch();
+
+
 
   // useEffect hook with getProduct function to get a single product with product id dependency
   useEffect(() => {
