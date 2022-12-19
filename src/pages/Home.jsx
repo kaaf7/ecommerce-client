@@ -36,10 +36,18 @@ import Explore from "../Components/Explore";
 
 // import Board display Component
 import Board from "../Components/Board";
+// import responsive back button
+import ResBackButton from "../Components/ResBackButton";
+
+// import responsive Settings from responsive.js
+import { mobile } from "../responsive";
 
 // items Container
 const Container = styled.div`
   overflow: hidden;
+  ${mobile({
+    height:"350%"
+  })}
 `;
 // items Werapper
 const Wrapper = styled.div`
@@ -60,7 +68,9 @@ const Home = () => {
   return (
     <Container>
       <Navbar></Navbar>
+
       <Wrapper>
+        <ResBackButton />
         <VideoPlayer />
         <Board></Board>
         <Sale></Sale>
