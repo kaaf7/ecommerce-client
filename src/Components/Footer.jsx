@@ -23,7 +23,7 @@ const Container = styled.div`
   ${mobile({
     display: "flex",
     justifyContent: "space-between",
-    height: "40vh",
+    height: "45vh",
     marginTop:"5vh"
   })}
 `;
@@ -43,7 +43,7 @@ const Item = styled.div`
 // left itemns container
 const LeftItems = styled.div`
   margin-left: 5.255vw;
-  height: 100%;
+  height: 150%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
