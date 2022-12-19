@@ -14,8 +14,10 @@ import { useSelector } from "react-redux";
 import FavoriteCard from "../Components/FavoriteCard";
 //import responsive Settings from responsive.js
 import { mobile, tablet } from "../responsive";
-
+// import heart icon
 import HeartBrokenOutlinedIcon from "@mui/icons-material/HeartBrokenOutlined";
+// import responsive back button
+import ResBackButton from "../Components/ResBackButton";
 
 const Container = styled.div`
   justify-content: center;
@@ -48,10 +50,14 @@ const Wrapper = styled.div`
 
 const EmptyFavorites = styled.p`
   display: flex;
-  font-size: 2.5vw;
+  position: fixed;
+  font-size: 3.5vw;
+  top: 30%;
+  width: 100%;
+  height: 100%;
   font-family: "Lexend", sans-serif;
   color: #c40a0af5;
-  font-weight: 200;
+  font-weight: 400;
   justify-content: center;
 `;
 
@@ -62,6 +68,7 @@ const Favorites = () => {
   return (
     <Container>
       <Navbar />
+      
       {favorites.length > 0 ? (
         <Wrapper>
           {/*map favorite items into FavoriteCard*/}
@@ -71,9 +78,10 @@ const Favorites = () => {
         </Wrapper>
       ) : (
         <EmptyFavorites>
-          FAVORITES IS EMPTY <HeartBrokenOutlinedIcon />
+          {"FAVORITES IS EMPTY  "} {" "} <HeartBrokenOutlinedIcon />
         </EmptyFavorites>
       )}
+      <ResBackButton/>
     </Container>
   );
 };
