@@ -48,7 +48,6 @@ const Container = styled.div`
     width: "100%",
     marginTop: "0",
     height: "110vh",
-
   })}
 
   ${tablet({
@@ -234,7 +233,10 @@ const Color = styled.select`
     border: none;
   }
   ${mobile({
-      width: "90%"
+    width: "90%",
+  })}
+  ${tablet({
+    width: "88%",
   })}
 `;
 // add to cart button
@@ -253,7 +255,10 @@ const AddToCartBtn = styled.button`
     background-color: grey;
   }
   ${mobile({
-      width: "90%"
+    width: "90%",
+  })}
+   ${tablet({
+    width: "90%",
   })}
 `;
 
@@ -287,8 +292,6 @@ const ProductPage = () => {
   const [mainImage, setMainImage] = useState("");
   // dispatch to call redux reducers
   const dispatch = useDispatch();
-
-
 
   // useEffect hook with getProduct function to get a single product with product id dependency
   useEffect(() => {
@@ -365,7 +368,9 @@ const ProductPage = () => {
             ))}
           </Color>
           {/*if color is added then call handleAddProductToCart function */}
-          <AddToCartBtn onClick={color && handleAddProductToCart}>ADD TO CART</AddToCartBtn>
+          <AddToCartBtn onClick={color && handleAddProductToCart}>
+            ADD TO CART
+          </AddToCartBtn>
           {/*product description props */}
           <ProductDescription>{product?.description}</ProductDescription>
         </ProductInfo>
