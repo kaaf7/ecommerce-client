@@ -31,7 +31,8 @@ import { publicRequest } from "../services";
 // import unique id uuid
 import { v4 as uuidv4 } from "uuid";
 
-
+// import responsive back button
+import ResBackButton from "../Components/ResBackButton";
 
 // all components container
 const Container = styled.div`
@@ -46,6 +47,8 @@ const Container = styled.div`
     flexDirection: "column",
     width: "100%",
     marginTop: "0",
+    height: "110vh",
+
   })}
 
   ${tablet({
@@ -233,8 +236,11 @@ const Color = styled.select`
 // add to cart button
 const AddToCartBtn = styled.button`
   margin-top: 4vh;
+  display: flex;
+  justify-content: center;
   width: 100%;
   padding: 1.5vh;
+  text-align: center;
   font-family: "Lexend", sans-serif;
   border: 0.1px solid black;
   background-color: #040404;
@@ -352,13 +358,12 @@ const ProductPage = () => {
             ))}
           </Color>
           {/*if color is added then call handleAddProductToCart function */}
-          <AddToCartBtn onClick={color && handleAddProductToCart}>
-            ADD
-          </AddToCartBtn>
+          <AddToCartBtn onClick={color && handleAddProductToCart}>ADD TO CART</AddToCartBtn>
           {/*product description props */}
           <ProductDescription>{product?.description}</ProductDescription>
         </ProductInfo>
       </Wrapper>{" "}
+      <ResBackButton />
     </Container>
   );
 };
