@@ -41,7 +41,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 // import currentUser and public axios request from services
-import { publicRequest, currentUser } from "../services";
+import { publicRequest } from "../services";
 
 // import responsive Settings from responsive.js
 import { mobile, tablet } from "../responsive";
@@ -54,6 +54,8 @@ import { updateCart } from "../redux/cartRedux";
 
 // import updateFavorite reduce from favorite slice
 import { updateFavorite } from "../redux/favoriteRedux";
+// import hamburger menu button
+import HamburgerMenu from "./HamburgerMenu";
 
 // all Components Container
 const Container = styled.div`
@@ -159,10 +161,11 @@ const RightItems = styled.div`
     display: "flex",
     width: "10vw",
     justifyContent: "center",
-    gap: "40px",
+    gap: "4vw",
     alignItems: "center",
     textAlign: "center",
-    marginLeft: "10%",
+    marginLeft: "3vw",
+    marginRight: "3vw",
     flex: "2",
   })}
   ${tablet({
@@ -464,16 +467,10 @@ export const Navbar = () => {
             </SearchContainer>
           </IconsContainer>
         </CenterItems>
-        {/* if user is not logged in show login sign, else don't show it*/}
-        <RightItems>
-          <IconItemMobile
-            onClick={() => {
-              NavigateDir("/");
-            }}
-          >
-            BANKAI.
-          </IconItemMobile>
 
+        <RightItems>
+          <HamburgerMenu />
+          {/* if user is not logged in show login sign, else don't show it*/}
           {!loggedIn && (
             <IconItem
               onClick={() => {
@@ -485,6 +482,7 @@ export const Navbar = () => {
               SIGN IN
             </IconItem>
           )}
+
           {/* if user is not logged in show register sign, else don't show it*/}
           {!loggedIn && (
             <IconItem
@@ -497,6 +495,7 @@ export const Navbar = () => {
               REGISTER
             </IconItem>
           )}
+          
           <IconItem>
             {" "}
             {/* *cart icon that navigates to Cart using user id which is Cart also same as cart id in DB
@@ -532,6 +531,14 @@ export const Navbar = () => {
             </Badge>{" "}
             FAVORITES{" "}
           </IconItem>
+          <IconItemMobile
+            onClick={() => {
+              NavigateDir("/");
+            }}
+          >
+            BANKAI.
+          </IconItemMobile>
+
           {/* if user is not logged in show profile sign, else don't show it*/}
           {loggedIn && (
             <IconItem style={{ color: "grey" }}>
