@@ -6,6 +6,9 @@
 // import useState Hook from React
 import { useState } from "react";
 
+// uselocation to get page lcoation
+import { useLocation } from "react-router-dom";
+
 // import styled Components
 import styled from "styled-components";
 
@@ -18,6 +21,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 // import login function from apiCalls
 import { login } from "../redux/apiCalls";
+
+import { useEffect } from "react";
+
+// import responsive back button
+import ResBackButton from "../Components/ResBackButton";
 
 //all components container
 const Container = styled.div`
@@ -93,6 +101,10 @@ const Login = () => {
   const loginError = useSelector((state) => state.user.error);
   const isFetching = useSelector((state) => state.user.isFetching);
 
+  const loginStarts = useSelector((state) => state.user.loginStarts);
+
+  // get location to determine category
+  const location = useLocation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -102,6 +114,10 @@ const Login = () => {
     e.preventDefault();
     login(dispatch, { username, password });
   };
+
+  useEffect(() => {
+    dispatch(loginStarts());
+  }, [location]);
 
   return (
     <Container>
@@ -135,6 +151,7 @@ const Login = () => {
           </Link>
         </Form>
       </Wrapper>
+      <ResBackButton />
     </Container>
   );
 };
