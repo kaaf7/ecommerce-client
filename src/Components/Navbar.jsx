@@ -393,7 +393,8 @@ export const Navbar = () => {
   };
 
   // search filter based on prodict title name if it includes any of the input letters
-  const searchFilter = products?.filter((product) => {
+  const searchFilter = products
+    .filter((product) => {
       return product.productTitle.toLowerCase().includes(searchedProduct);
     })
     .slice(0, 5);
@@ -494,7 +495,7 @@ export const Navbar = () => {
               REGISTER
             </IconItem>
           )}
-          
+
           <IconItem>
             {" "}
             {/* *cart icon that navigates to Cart using user id which is Cart also same as cart id in DB
