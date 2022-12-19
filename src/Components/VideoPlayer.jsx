@@ -22,7 +22,6 @@ import { mobile, tablet } from "../responsive";
 
 import Video1 from "../videos/Video_1.mp4";
 
-
 // import audio on icon
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 
@@ -72,8 +71,8 @@ const AudioController = styled.div`
   width: 1.051vw;
   height: 1.051vw;
   position: absolute;
-  left: 9vw;
-  top: 12vh;
+  left: 11%;
+  top: 15%;
   background-color: none;
   opacity: 1;
   display: flex;
@@ -83,14 +82,14 @@ const AudioController = styled.div`
   z-index: 1;
   cursor: pointer;
   ${mobile({
-    left: "10%",
-    top: "15%",
+    left: "14%",
+    top: "35%",
     width: ".5vw",
     height: ".5vw",
   })}
   ${tablet({
     left: "5%",
-    top: "13%",
+    top: "15%",
     width: "1.051vw",
     height: "1.051vw",
   })}
@@ -125,7 +124,7 @@ const VideoPlayer = () => {
           muted={muted}
           loop={true}
           playsinline
-        />
+        ></Video>
       </Wrapper>
     </Container>
   );
