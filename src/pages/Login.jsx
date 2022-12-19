@@ -101,10 +101,7 @@ const Login = () => {
   const loginError = useSelector((state) => state.user.error);
   const isFetching = useSelector((state) => state.user.isFetching);
 
-  const loginStarts = useSelector((state) => state.user.loginStarts);
-
   // get location to determine category
-  const location = useLocation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -115,9 +112,7 @@ const Login = () => {
     login(dispatch, { username, password });
   };
 
-  useEffect(() => {
-    dispatch(loginStarts());
-  }, [location]);
+
 
   return (
     <Container>
