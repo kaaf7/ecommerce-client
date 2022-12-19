@@ -547,8 +547,8 @@ export const Navbar = () => {
               style={{ color: "grey" }}
               onClick={(e) => {
                 e.preventDefault();
-                // localStorage.clear();
-                localStorage.removeItem("persist:root");
+                localStorage.clear();
+                //localStorage.removeItem("persist:root");
                 window.location.reload();
               }}
             >
