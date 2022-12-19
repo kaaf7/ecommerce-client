@@ -9,9 +9,6 @@ import React from "react";
 // import Styled Components
 import styled from "styled-components";
 
-// import cart Icon from material UI
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-
 import SentimentVeryDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentVeryDissatisfiedOutlined";
 
 // import responsive Settings from responsive.js
@@ -24,6 +21,9 @@ import { Navbar } from "../Components/Navbar";
 
 // import useSelector to get states from redux slices
 import { useSelector } from "react-redux";
+
+// import responsive back button
+import ResBackButton from "../Components/ResBackButton";
 
 // Container that contains all of the components
 const Container = styled.div`
@@ -147,10 +147,14 @@ const OrderTitle = styled.h2`
 
 const EmptyCartSign = styled.p`
   display: flex;
-  font-size: 3vw;
+  position: fixed;
+  font-size: 3.5vw;
+  top: 30%;
+  width: 100%;
+  height: 100%;
   font-family: "Lexend", sans-serif;
   color: #c40a0af5;
-  font-weight: 200;
+  font-weight: 400;
   justify-content: center;
 `;
 
@@ -201,10 +205,11 @@ const Cart = () => {
         </Wrapper>
       ) : (
         <EmptyCartSign>
-          CART IS EMPTY
+          CART IS EMPTY 
           <SentimentVeryDissatisfiedOutlinedIcon />
         </EmptyCartSign>
       )}
+      <ResBackButton />
     </Container>
   );
 };
