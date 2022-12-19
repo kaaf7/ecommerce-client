@@ -8,7 +8,6 @@ import Register from "./pages/Register";
 import Favorites from "./pages/Favorites";
 import { useSelector } from "react-redux";
 import { ScrollToTop } from "react-router-scroll-to-top";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -33,6 +32,7 @@ function App() {
           path="/register"
           element={registeration ? <Products /> : <Register />}
         />
+        
       </Routes>
     </Router>
   );
