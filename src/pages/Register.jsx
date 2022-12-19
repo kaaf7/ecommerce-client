@@ -19,6 +19,9 @@ import { useState } from "react";
 // import register function from apiCalls
 import { register } from "../redux/apiCalls";
 
+// import responsive back button
+import ResBackButton from "../Components/ResBackButton";
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -130,6 +133,7 @@ const Register = () => {
           <Button onClick={handleRegister}>CREATE</Button>
         </Form>
       </Wrapper>
+      <ResBackButton/>
     </Container>
   );
 };
