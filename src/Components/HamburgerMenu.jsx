@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 // import responsive Settings from responsive.js
-import { mobile, tablet } from "../responsive";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: none;
@@ -51,7 +51,7 @@ const Icon = styled.span`
   width: 1rem;
   height: 2px;
   display: inline-block;
-  transition: all 0.3s;
+  transition: all 0.1s;
   &::before,
   &::after {
     content: "";
@@ -61,7 +61,7 @@ const Icon = styled.span`
     display: inline-block;
     position: absolute;
     left: 0;
-    transition: all 0.2s;
+    transition: all 0.1s;
   }
   &::before {
     top: ${(props) => (props.clicked ? "0" : "-0.3rem")};
