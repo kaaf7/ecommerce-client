@@ -531,13 +531,6 @@ export const Navbar = () => {
             </Badge>{" "}
             FAVORITES{" "}
           </IconItem>
-          <IconItemMobile
-            onClick={() => {
-              NavigateDir("/");
-            }}
-          >
-            BANKAI.
-          </IconItemMobile>
 
           {/* if user is not logged in show profile sign, else don't show it*/}
           {loggedIn && (
