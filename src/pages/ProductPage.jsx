@@ -72,8 +72,8 @@ const Wrapper = styled.div`
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginLeft: "7.882vw",
-    marginRight: "7.882vw",
+    marginLeft: "3.882vw",
+    marginRight: "3.882vw",
     height: "100vh",
     overflowX: "hidden",
   })}
@@ -95,6 +95,7 @@ const LookBookWrapper = styled.div`
   flex: 1;
 
   ${mobile({
+    width: "90%",
     marginTop: "20%",
     marginBotton: "0",
     height: "70%",
@@ -232,6 +233,9 @@ const Color = styled.select`
     box-shadow: none;
     border: none;
   }
+  ${mobile({
+      width: "90%"
+  })}
 `;
 // add to cart button
 const AddToCartBtn = styled.button`
@@ -248,6 +252,9 @@ const AddToCartBtn = styled.button`
   &:hover {
     background-color: grey;
   }
+  ${mobile({
+      width: "90%"
+  })}
 `;
 
 // product details
