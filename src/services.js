@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://ecomm-backend-server.onrender.com/api";
+const BASE_URL = process.env.BASE_URL;
 const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
 const currentUser = user && JSON.parse(user).currentUser;
 const TOKEN = currentUser?.accessToken;
