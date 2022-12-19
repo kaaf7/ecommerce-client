@@ -563,6 +563,13 @@ export const Navbar = () => {
               LOGOUT
             </IconItem>
           )}
+          <IconItemMobile
+            onClick={() => {
+              NavigateDir("/");
+            }}
+          >
+            BANKAI.
+          </IconItemMobile>
         </RightItems>
       </Wrapper>
       <Announcement>FREE SHIPPING OVER € 50 ORDERS</Announcement>
