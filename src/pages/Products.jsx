@@ -6,6 +6,7 @@
 
 //import react and useState
 import React, { useState } from "react";
+
 // uselocation to get page lcoation
 import { useLocation } from "react-router-dom";
 
@@ -33,7 +34,9 @@ import ProductList from "../Components/ProductList";
 // import Filter icon
 import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 
-import { useEffect } from "react";
+// import responsive back button
+import ResBackButton from "../Components/ResBackButton";
+
 
 // all components container
 const Container = styled.div`
@@ -95,10 +98,10 @@ const Products = () => {
     setSort(e.target.value);
   };
 
-  
   return (
     <Container>
       <Navbar></Navbar>
+      
       <FilterWrapper>
         <FilterListOutlinedIcon />
         <Filter name="colors" id="colors" onChange={handleFilters}>
@@ -143,6 +146,7 @@ const Products = () => {
       <Board></Board>
       <Explore></Explore>
       <Footer></Footer>
+      <ResBackButton/>
     </Container>
   );
 };
