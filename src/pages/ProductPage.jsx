@@ -257,7 +257,7 @@ const AddToCartBtn = styled.button`
   ${mobile({
     width: "90%",
   })}
-   ${tablet({
+  ${tablet({
     width: "90%",
   })}
 `;
@@ -301,8 +301,12 @@ const ProductPage = () => {
           `/products/allproducts/product?id=${productId}`
         );
         setProduct(res.data);
-        let product = res.data
-        setMainImage(product.images[1])
+        let product = res.data;
+        setMainImage(product.images[1]);
+        let colors = res.data.colors;
+        if (colors.length() <= 1) {
+          setColor(colors[0]);
+        }
       } catch (err) {}
     };
     getProduct();
@@ -354,21 +358,21 @@ const ProductPage = () => {
           {/*product price props */}
           <PriceTag>€ {product?.price}</PriceTag>
           {/*product color props */}
-          <Color
-            defaultValue={"DEFAULT"}
-            onChange={(e) => setColor(e.target.value)}
-          >
-            <option
-              value="DEFAULT"
-              style={{ fontFamily: "Lexend,sanSerif" }}
-              disabled
+
+          {product.colors > 1 ? (
+            <Color
+              defaultValue={"DEFAULT"}
+              onChange={(e) => setColor(e.target.value)}
             >
-              SELECT COLOR
-            </option>
-            {product?.colors.map((color) => (
-              <option key={color}>{color.toUpperCase()}</option>
-            ))}
-          </Color>
+              <option>{product?.colors[0]}</option>
+            </Color>
+          ) : (
+            <Color>
+              {product?.colors.map((color) => (
+                <option defaultValue={"DEFAULT"}>{color.toUpperCase()}</option>
+              ))}
+            </Color>
+          )}
           {/*if color is added then call handleAddProductToCart function */}
           <AddToCartBtn onClick={color && handleAddProductToCart}>
             ADD TO CART
