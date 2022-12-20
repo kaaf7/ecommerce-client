@@ -301,6 +301,8 @@ const ProductPage = () => {
           `/products/allproducts/product?id=${productId}`
         );
         setProduct(res.data);
+        let product = res.data
+        setMainImage(product.images[0])
       } catch (err) {}
     };
     getProduct();
@@ -343,7 +345,7 @@ const ProductPage = () => {
             ))}
           </LookBookContainer>
           {/*if not main image then show first image*/}
-          <LookBook src={!mainImage ? product?.images[1] : mainImage} />
+          <LookBook src={mainImage} />
         </LookBookWrapper>
 
         <ProductInfo>
