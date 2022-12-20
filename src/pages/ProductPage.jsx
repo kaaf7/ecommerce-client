@@ -359,7 +359,7 @@ const ProductPage = () => {
           <PriceTag>€ {product?.price}</PriceTag>
           {/*product color props */}
 
-          {product.colors > 1 ? (
+          {product.colors.length() > 1 ? (
             <Color
               defaultValue={"DEFAULT"}
               onChange={(e) => setColor(e.target.value)}
