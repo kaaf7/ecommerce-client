@@ -287,7 +287,7 @@ const ProductPage = () => {
   // set product quantity 0 before adding it to cart
   const [quantity, setQuantity] = useState(0);
   // set product color
-  const [color, setColor] = useState();
+  const [color, setColor] = useState("");
   // set main image as nothing
   const [mainImage, setMainImage] = useState("");
   // dispatch to call redux reducers
@@ -304,8 +304,10 @@ const ProductPage = () => {
         let product = res.data;
         setMainImage(product.images[1]);
         let colors = res.data.colors;
-        if (colors.length() <= 1) {
+        if (colors.length < 2) {
           setColor(colors[0]);
+        } else {
+          setColor("");
         }
       } catch (err) {}
     };
@@ -359,17 +361,20 @@ const ProductPage = () => {
           <PriceTag>€ {product?.price}</PriceTag>
           {/*product color props */}
 
-          {product?.colors.length() > 1 ? (
+          {product?.colors.length < 2 ? (
+            <Color>
+              <option>{product?.colors[0].toUpperCase()}</option>
+            </Color>
+          ) : (
             <Color
               defaultValue={"DEFAULT"}
               onChange={(e) => setColor(e.target.value)}
             >
-              <option>{product?.colors[0]}</option>
-            </Color>
-          ) : (
-            <Color>
+              <option value="DEFAULT" disabled>
+                SELECT COLOR
+              </option>
               {product?.colors.map((color) => (
-                <option defaultValue={"DEFAULT"}>{color.toUpperCase()}</option>
+                <option key ={color}>{color.toUpperCase()}</option>
               ))}
             </Color>
           )}
