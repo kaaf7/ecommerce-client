@@ -302,7 +302,7 @@ const ProductPage = () => {
         );
         setProduct(res.data);
         let product = res.data
-        setMainImage(product.images[0])
+        setMainImage(product.images[1])
       } catch (err) {}
     };
     getProduct();
