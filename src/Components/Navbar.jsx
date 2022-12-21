@@ -390,15 +390,17 @@ export const Navbar = () => {
   /* useEffect Hook to fetch update cart and favorites with dependencies */
   useEffect(() => {
     if ((user && productAdded) || (user && productRemoved)) {
-      dispatch(updateCart(cart));
-
-      if (!cartUpdateLoading && cartUpdateSuccess) {
-        console.log("cart updated");
-      }
+      dispatch(updateCart(cart)).then((data) => console.log(data));
     } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
       dispatch(updateFavorite(favorites)).then((data) => console.log(data));
     }
   }, []);
+
+  useEffect(() => {
+    if (!cartUpdateLoading && cartUpdateSuccess) {
+      console.log("cart updated");
+    }
+  }, [cartUpdateLoading, cartUpdateSuccess]);
 
   // NavigateDir depends on custome directory*/
   const NavigateDir = (directory) => {
