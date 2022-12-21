@@ -556,15 +556,6 @@ export const Navbar = () => {
             </Badge>{" "}
             FAVORITES{" "}
           </IconItem>
-
-          {/* if user is not logged in show profile sign, else don't show it*/}
-          {loggedIn && (
-            <IconItem style={{ color: "grey" }}>
-              {" "}
-              <Person3OutlinedIcon />
-              PROFILE
-            </IconItem>
-          )}
           {/* if user is not logged in show logout sign, else don't show it
            * after pressed clear local storage and then refresh page */}
           {loggedIn && (
