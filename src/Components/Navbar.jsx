@@ -386,7 +386,11 @@ export const Navbar = () => {
   /* useEffect Hook to fetch update cart and favorites with dependencies */
   useEffect(() => {
     if ((user && productAdded) || (user && productRemoved)) {
-      dispatch(updateCart(cart));
+      const doUpdateCart = async () => {
+        const res = await dispatch(dispatch(updateCart(cart)));
+        console.log(res);
+      };
+      doUpdateCart()
     } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
       dispatch(updateFavorite(favorites)).then((data) => console.log(data));
     }
