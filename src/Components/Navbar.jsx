@@ -390,7 +390,7 @@ export const Navbar = () => {
     } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
       dispatch(updateFavorite(favorites));
     }
-  }, [productAdded, productRemoved, favoriteAdded, favoriteRemoved]);
+  }, []);
 
   // NavigateDir depends on custome directory*/
   const NavigateDir = (directory) => {
