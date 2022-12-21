@@ -57,6 +57,9 @@ import { updateFavorite } from "../redux/favoriteRedux";
 // import hamburger menu button
 import HamburgerMenu from "./HamburgerMenu";
 
+// import useLocation to get product id
+import { useLocation } from "react-router-dom";
+
 // all Components Container
 const Container = styled.div`
   width: 100%;
@@ -186,6 +189,7 @@ const MenuItem = styled.div`
   text-align: center;
   font-weight: 350;
   font-size: 0.683vw;
+  transition: 0.2s;
   cursor: pointer;
   flex: 1;
   ${mobile({ fontSize: "1vh" })}
@@ -322,6 +326,13 @@ const SearchText = styled.p`
 `;
 
 export const Navbar = () => {
+  // get location
+  const location = useLocation();
+  // get product category
+  const category = location.pathname.split("/")[2];
+  // get product category
+  const explore = location.pathname.split("/")[1];
+
   //useNavigate to switch pages
   const navigate = useNavigate();
   // activate dispatch
@@ -411,10 +422,14 @@ export const Navbar = () => {
             BANKAI.
           </Logo>
           <MenuItem
-            style={{ color: "darkred" }}
             onClick={() => {
               NavigateDir("/products");
             }}
+            style={
+              !category && explore === "products"
+                ? { background: "lightgrey" }
+                : { background: "none" }
+            }
           >
             EXPLORE{" "}
           </MenuItem>
@@ -422,6 +437,11 @@ export const Navbar = () => {
             onClick={() => {
               NavigateDir("/products/women");
             }}
+            style={
+              category && category === "women"
+                ? { background: "lightgrey" }
+                : { background: "none" }
+            }
           >
             WOMEN
           </MenuItem>{" "}
@@ -429,6 +449,11 @@ export const Navbar = () => {
             onClick={() => {
               NavigateDir("/products/men");
             }}
+            style={
+              category && category === "men"
+                ? { background: "lightgrey" }
+                : { background: "none" }
+            }
           >
             MEN
           </MenuItem>
