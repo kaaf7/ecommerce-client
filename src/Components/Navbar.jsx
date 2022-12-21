@@ -391,10 +391,9 @@ export const Navbar = () => {
   useEffect(() => {
     if ((user && productAdded) || (user && productRemoved)) {
       dispatch(updateCart(cart));
-      if (cartUpdateLoading) {
-        console.log("cart is updating");
-      } else if (!cartUpdateLoading && cartUpdateSuccess) {
-        console.log("cart is updated");
+
+      if (!cartUpdateLoading && cartUpdateSuccess) {
+        console.log("cart updated");
       }
     } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
       dispatch(updateFavorite(favorites)).then((data) => console.log(data));
