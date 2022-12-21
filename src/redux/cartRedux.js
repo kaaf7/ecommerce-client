@@ -88,6 +88,9 @@ const cartSlice = createSlice({
   /* update cart extra reducer to updatecart which is an createAsyncThunk function it 
   will update cart on DB with every change happens either product is added or removed*/
   extraReducers: {
+    [updateCart.pending]: (state, action) => {
+      state.isLoading = true;
+    },
     [updateCart.fulfilled]: (state, action) => {
       state.products = action.payload?.products;
       state.quantity = action.payload?.quantity;
@@ -96,7 +99,6 @@ const cartSlice = createSlice({
     },
     [updateCart.rejected]: (state, action) => {
       state.message = action.payload;
-      state.isLoading = false;
       state.isSuccess = false;
     },
   },
