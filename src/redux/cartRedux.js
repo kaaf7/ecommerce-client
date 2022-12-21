@@ -89,8 +89,8 @@ const cartSlice = createSlice({
   will update cart on DB with every change happens either product is added or removed*/
   extraReducers: {
     [updateCart.fulfilled]: (state, action) => {
-      state.products = action.payload.products;
-      state.quantity = action.payload.quantity;
+      state.products = action.payload?.products;
+      state.quantity = action.payload?.quantity;
       state.isLoading = false;
       state.isSuccess = true;
     },
