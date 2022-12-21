@@ -29,10 +29,9 @@ export const login = async (dispatch, user) => {
     const cart = await privateRequest.get(`/cart/find?id=${userId}`, {
       headers: { token: `${userToken}` },
     });
-    return Promise.all(
-      dispatch(getFavorite(favorites.data)),
-      dispatch(getCart(cart.data))
-    );
+
+    dispatch(getFavorite(favorites.data));
+    dispatch(getCart(cart.data));
   };
 
   // dispatch loginStart reducer
