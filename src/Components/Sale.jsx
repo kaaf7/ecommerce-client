@@ -174,7 +174,7 @@ const Sale = () => {
             }
           </ImageContainer>
           <InfoContainer>
-            <Title>WINTER SALE</Title>
+            <Title>LATEST ITEM</Title>
             <Description>
               LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT. AENEAN
               COMMODO LIGULA EGET DOLOR. AENEAN MASSA. CUM SOCIIS NATOQUE
