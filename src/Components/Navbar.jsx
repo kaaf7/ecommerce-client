@@ -388,7 +388,7 @@ export const Navbar = () => {
     if ((user && productAdded) || (user && productRemoved)) {
       dispatch(updateCart(cart));
     } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
-      dispatch(updateFavorite(favorites));
+      dispatch(updateFavorite(favorites)).then((data) => console.log(data));
     }
   }, []);
 
