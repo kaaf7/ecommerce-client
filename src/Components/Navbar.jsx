@@ -350,6 +350,8 @@ export const Navbar = () => {
   const productRemoved = useSelector((state) => state.cart?.productRemoved);
   // cart quantity state from reducer by measureing cart array length
   const cartQuantity = useSelector((state) => state.cart.products?.length);
+  // cart state from cart slice
+  const lodingCartUpdate = useSelector((state) => state.isLoading);
 
   // favorites state from favorite slice
   const favorites = useSelector((state) => state.favorite);
@@ -386,11 +388,12 @@ export const Navbar = () => {
   /* useEffect Hook to fetch update cart and favorites with dependencies */
   useEffect(() => {
     if ((user && productAdded) || (user && productRemoved)) {
-      const doUpdateCart = async () => {
-        const res = await dispatch(dispatch(updateCart(cart)));
-        console.log(res);
-      };
-      doUpdateCart()
+      dispatch(updateCart(cart));
+      if (lodingCartUpdate) {
+        console.log("cart is updated");
+      } else {
+        console.log("cart is not updated");
+      }
     } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
       dispatch(updateFavorite(favorites)).then((data) => console.log(data));
     }
