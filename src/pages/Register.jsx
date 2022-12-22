@@ -8,7 +8,7 @@
 import styled from "styled-components";
 
 // useDispatch to call register reducers
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // imprt responsive design
 import { mobile } from "../responsive";
@@ -21,6 +21,7 @@ import { register } from "../redux/apiCalls";
 
 // import responsive back button
 import ResBackButton from "../Components/ResBackButton";
+import { registerDone } from "../redux/userRedux";
 
 const Container = styled.div`
   width: 100vw;
@@ -35,8 +36,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 25%;
+  heigh: 100vh;
   padding: 20px;
   background-color: white;
+
   ${mobile({ width: "75%" })}
 `;
 
@@ -76,26 +79,34 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
-
 // error text shows when sign up fails
+
 const ErrorText = styled.p`
   color: red;
   font-family: "Lexend", sans-serif;
-  margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 1vh;
 `;
 
 const Register = () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const userNameRegex = /^[a-zA-Z]{6,}$/;
+  const passswordRegex = /^.{6,}$/;
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-
   // handleRegister function that call function by and dispatch email,username, and password
   const handleRegister = (e) => {
     e.preventDefault();
-    if (username && password && email) {
+    if (
+      userNameRegex.test(username) &&
+      passswordRegex.test(password) &&
+      emailRegex.test(email)
+    ) {
       register(dispatch, { email, username, password });
+      dispatch(registerDone());
     } else {
       setError(true);
     }
@@ -129,11 +140,18 @@ const Register = () => {
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          {error && <ErrorText>PLEASE INSERT ALL CREDENTIALS</ErrorText>}
+
           <Button onClick={handleRegister}>CREATE</Button>
         </Form>
+        {error && (
+          <>
+            <ErrorText>USERNAME MUST BE AT LEAST 6 CHARACRTERS</ErrorText>
+            <ErrorText>PASSOWRD MUST BE AT LEAST 6 CHARACRTERS</ErrorText>
+            <ErrorText>PLEASE INSERT A CORRECT EMAIL</ErrorText>
+          </>
+        )}
       </Wrapper>
-      <ResBackButton/>
+      <ResBackButton />
     </Container>
   );
 };
