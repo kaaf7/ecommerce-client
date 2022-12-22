@@ -60,6 +60,8 @@ import HamburgerMenu from "./HamburgerMenu";
 // import useLocation to get product id
 import { useLocation } from "react-router-dom";
 
+import { unwrapResult } from "@reduxjs/toolkit";
+
 // all Components Container
 const Container = styled.div`
   width: 100%;
@@ -350,10 +352,6 @@ export const Navbar = () => {
   const productRemoved = useSelector((state) => state.cart?.productRemoved);
   // cart quantity state from reducer by measureing cart array length
   const cartQuantity = useSelector((state) => state.cart.products?.length);
-  // cart state from cart slice
-  const cartUpdateLoading = useSelector((state) => state.isLoading);
-  // cart state from cart slice
-  const cartUpdateSuccess = useSelector((state) => state.isSuccess);
 
   // favorites state from favorite slice
   const favorites = useSelector((state) => state.favorite);
@@ -374,7 +372,6 @@ export const Navbar = () => {
   const userId = user?._id;
   // logged in state from user reducer
   const loggedIn = useSelector((state) => state.user?.loggedIn);
-
   /* useEffect Hook to fetch Products from API using axios's public request 
   without any dependencies */
   useEffect(() => {
@@ -387,20 +384,37 @@ export const Navbar = () => {
     getProducts();
   }, []);
 
-  /* useEffect Hook to fetch update cart and favorites with dependencies */
+  /* useEffect Hook to fetch update cart */
   useEffect(() => {
     if ((user && productAdded) || (user && productRemoved)) {
-      dispatch(updateCart(cart)).then((data) => console.log(data));
-    } else if ((user && favoriteAdded) || (user && favoriteRemoved)) {
-      dispatch(updateFavorite(favorites)).then((data) => console.log(data));
+      const updateCartAndGetData = async () => {
+        try {
+          const updatedCart = await dispatch(updateCart(cart));
+          const CartPayload = unwrapResult(updatedCart);
+          console.log(CartPayload);
+        } catch (err) {
+          console.log("cart is not updated");
+        }
+      };
+      updateCartAndGetData();
     }
   }, []);
 
+  /* useEffect Hook to fetch update favorites with dependencies */
   useEffect(() => {
-    if (!cartUpdateLoading && cartUpdateSuccess) {
-      console.log("cart updated");
+    if ((user && favoriteAdded) || (user && favoriteRemoved)) {
+      const updateFavoriteAndGetData = async () => {
+        const updatedFavorites = await dispatch(updateFavorite(favorites));
+        try {
+          const Favoritepayload = unwrapResult(updatedFavorites);
+          console.log(Favoritepayload);
+        } catch (err) {
+          console.log("favorite is not updated");
+        }
+      };
+      updateFavoriteAndGetData();
     }
-  }, [cartUpdateLoading, cartUpdateSuccess]);
+  }, []);
 
   // NavigateDir depends on custome directory*/
   const NavigateDir = (directory) => {
