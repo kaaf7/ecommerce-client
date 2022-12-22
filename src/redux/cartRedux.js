@@ -47,7 +47,7 @@ const cartSlice = createSlice({
       // set state products as product array
       state.products = productsArray;
       // set quanitity as products quantity
-      state.quantity = productsArray.quantity;
+      //state.quantity = productsArray.quantity;
       // get sum price by summing all prices inside array using reduce array method
       let sumPrice = productsArray.reduce((acc, product) => {
         return acc + product.price;
@@ -59,7 +59,7 @@ const cartSlice = createSlice({
       // push action payload which is product into state products array
       state.products.push(action.payload);
       // increase state quanity by 1
-      state.quantity += 1;
+      // state.quantity += 1;
       // add the new added product price into the existing sum price
       state.price += action.payload.price;
       // product added is true
@@ -76,7 +76,7 @@ const cartSlice = createSlice({
       // assign state products as updatedProducts after product removal
       state.products = updatedProducts;
       // subtract 1 from quantity
-      state.quantity -= 1;
+      //state.quantity -= 1;
       // subtract product's price from total price sum
       state.price -= action.payload.price;
       // product added is false
@@ -93,7 +93,6 @@ const cartSlice = createSlice({
     },
     [updateCart.fulfilled]: (state, action) => {
       state.products = action.payload?.products;
-      state.quantity = action.payload?.quantity;
       state.isLoading = false;
       state.isSuccess = true;
     },
