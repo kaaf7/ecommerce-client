@@ -47,7 +47,7 @@ const favoritesSlice = createSlice({
       // set state favorites as favoritesArray
       state.favorites = favoritesArray;
       // set state quantity as favoritesArray's quantity
-      state.quantity = favoritesArray.quantity;
+      // state.quantity = favoritesArray.quantity;
     },
     //addAndRemoveFavorite reducer is responsible for adding and removing favorites
     addAndRemoveFavorite: (state, action) => {
@@ -60,7 +60,7 @@ const favoritesSlice = createSlice({
       //if it does not exist then add it but if it exists then remove it
       if (!doesFavoritExist) {
         state.favorites.push(action.payload);
-        state.quantity += 1;
+       // state.quantity += 1;
         state.favoriteAdded = true;
         state.favoriteRemoved = false;
       } else {
@@ -68,7 +68,7 @@ const favoritesSlice = createSlice({
           (favorite) => favorite._id !== action.payload._id
         );
         state.favorites = updatedFavorites;
-        state.quantity -= 1;
+        //state.quantity -= 1;
         state.favoriteAdded = false;
         state.favoriteRemoved = true;
       }
@@ -82,7 +82,7 @@ const favoritesSlice = createSlice({
       state.isLoading = true;
     },
     [updateFavorite.fulfilled]: (state, action) => {
-      state.quantity = action.payload.quantity;
+     // state.quantity = action.payload.quantity;
       state.favorites = action.payload.favorites;
       state.isLoading = false;
       state.isSuccess = true;
