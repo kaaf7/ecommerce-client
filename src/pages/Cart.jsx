@@ -172,15 +172,15 @@ const Cart = () => {
     <Container>
       <Navbar />
 
-      {cartProducts.length > 0 ? (
+      {cartProducts?.length > 0 ? (
         <Wrapper>
           {/* mapp all purchased products into CartItem component*/}
           <PurchasedItems>
-            {cartProducts.map((product) => (
+            {cartProducts?.map((product) => (
               <CartItem key={product.uniqueId} purchasedProduct={product} />
             ))}
           </PurchasedItems>
-          {cartProducts.length > 0 && (
+          {cartProducts?.length > 0 && (
             <PurchaseForm>
               <OrderTitle>ORDER SUMMERY</OrderTitle>
               <OrderDetails>
