@@ -28,7 +28,11 @@ import { mobile, tablet } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 
 // all Components Container
-const Container = styled.div``;
+const Container = styled.div`
+  border: 0.1 solid black;
+  justify-content: center;
+  align-items: center;
+`;
 
 // the template that will contain the Product images and info
 const ProductCardTemplate = styled.div`
@@ -49,6 +53,17 @@ const ProductImage = styled.img`
   cursor: pointer;
   ${mobile({
     width: "30vw",
+  })}
+  ${tablet({
+    maxHeight: "50vh",
+    maxWidth: "40vw",
+  })}
+`;
+const ImageContainer = styled.div`
+  max-height: 60vh;
+  position: relative;
+  ${mobile({
+    width: "inherit",
   })}
   ${tablet({
     maxHeight: "50vh",
@@ -127,30 +142,33 @@ const ColorSelections = styled.div`
 const ProductHeart = styled.div`
   width: 2vw;
   height: 2vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 20%;
-  margin-top: 30%;
-  border-radius: 50%;
-  opacity: 1;
   position: absolute;
+  top: 90%;
+  left: 85%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
   transition: 1s;
+
   cursor: pointer;
   :hover {
     transition: 1s;
-    transform: scale(1.3);
+    //transform: scale(1.3);
   }
   ${mobile({
-    width: "2vw",
-    height: "2vw",
-    marginLeft: "17.5%",
+    width: "1vw",
+    height: "1vw",
+    top: "50%",
+    left: "50%",
+    position: "absolute",
+    transform: "translate(-50%, -50%)",
   })}
   ${tablet({
-    width: "2vw",
-    height: "vw",
-    marginLeft: "40%",
-    marginTop:"60%"
+    width: "3vw",
+    height: "3vw",
+    top: "50%",
+    left: "50%",
+    position: "absolute",
+    transform: "translate(-50%, -50%)",
   })}
 `;
 // passing product and category in productCard component to change its props in other pages
@@ -159,7 +177,6 @@ const ProductCard = ({ product, category }) => {
   const navigate = useNavigate();
   // activate dispatch
   const dispatch = useDispatch();
-
   /* *
    *handleFavorite function responsible for adding or removing products into favorites
    *It activates the function using dispatch and the product intended to be added */
@@ -186,29 +203,31 @@ const ProductCard = ({ product, category }) => {
       <ProductCardTemplate>
         {/* show the heart sign only if the display in a category */}
         {/* handleFavorite function to add product into favorite list*/}
-        {category && (
-          <ProductHeart onClick={handleFavorite}>
-            <Badge badgeContent={0} color="error">
-              {/*if the product does not exist in favorites turn the heart into red 
-            , else turn it grey*/}
-              <FavoriteIcon
-                sx={
-                  doesFavoritExist
-                    ? { color: "#ce1d1df5" }
-                    : { color: "darkgrey" }
-                }
-              />
-            </Badge>
-          </ProductHeart>
-        )}
         {/*product image props*/}
-        <ProductImage
-          src={product?.images[0]}
-          // on mouse hover the product main image will change to another image
-          onMouseEnter={(e) => (e.target.src = product?.images[1])}
-          onMouseLeave={(e) => (e.target.src = product?.images[0])}
-          onClick={() => openProduct(product?._id)}
-        ></ProductImage>
+        <ImageContainer>
+          {category && (
+            <ProductHeart onClick={handleFavorite}>
+              <Badge badgeContent={0} color="error">
+                {/*if the product does not exist in favorites turn the heart into red 
+            , else turn it grey*/}
+                <FavoriteIcon
+                  sx={
+                    doesFavoritExist
+                      ? { color: "#ce1d1df5" }
+                      : { color: "darkgrey" }
+                  }
+                />
+              </Badge>
+            </ProductHeart>
+          )}
+          <ProductImage
+            src={product?.images[0]}
+            // on mouse hover the product main image will change to another image
+            onMouseEnter={(e) => (e.target.src = product?.images[1])}
+            onMouseLeave={(e) => (e.target.src = product?.images[0])}
+            onClick={() => openProduct(product?._id)}
+          ></ProductImage>
+        </ImageContainer>
         <ProductInfoContainer>
           {/*product title props*/}
           <ProductInfo>{product?.productTitle.toUpperCase()}</ProductInfo>
