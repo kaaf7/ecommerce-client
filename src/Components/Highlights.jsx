@@ -17,7 +17,7 @@ import styled from "styled-components";
 import ProductCard from "./ProductCard";
 
 // import responsive Settings from responsive.js
-import { mobile, tablet } from "../responsive";
+import { mobile, tablet, mcBook } from "../responsive";
 
 // import public request from axios services
 import { publicRequest } from "../services";
@@ -34,6 +34,9 @@ const Container = styled.div`
     display: "none",
   })}
   ${tablet({
+    display: "none",
+  })}
+  ${mcBook({
     display: "none",
   })}
 `;
