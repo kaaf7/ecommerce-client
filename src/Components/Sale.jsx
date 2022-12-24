@@ -1,7 +1,7 @@
 /* *👇
  *This is Sale Component
  *cretaed and styled with Styled Component
- *It will show Sale items with Image and Information
+ *It will show latest items with Image and Information
  *it also directs user to displayed Products's page when clicked
  */
 
@@ -15,7 +15,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 
 // import responsive Settings from responsive.js
-import { mobile,tablet } from "../responsive";
+import { mobile, tablet } from "../responsive";
 
 // import useNavigate to redirect to pages
 import { useNavigate } from "react-router-dom";
@@ -51,8 +51,7 @@ const Wrapper = styled.div`
   justify-content: center;
   text-align: start;
   transition: all 1.5s ease;
-  // border: 0.1px solid #d5d5d5;
-  //background-color: #f4f4f4;
+
 `;
 
 // Product Container
@@ -67,6 +66,7 @@ const Product = styled.div`
 const ImageContainer = styled.div`
   height: 100%;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   margin-left: 7.8125vw;
@@ -78,9 +78,11 @@ const ImageContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 20%;
   object-fit: scale-down;
-  object-position: 0% 120%;
-  margin-right: 17.1875vw;
+  transform: translate(-50%, -50%);
   cursor: pointer;
 `;
 // Product Info Container
