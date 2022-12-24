@@ -77,7 +77,7 @@ const PurchasedItemName = styled.h4`
   font-family: "Lexend", sans-serif;
   font-weight: 300;
   margin-top: 0;
-  margin-bottom: 1px;
+  margin-bottom: .5vh;
   font-size: 2vh;
   ${mobile({
     fontSize: "1vh",
