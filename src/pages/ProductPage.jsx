@@ -227,10 +227,13 @@ const Color = styled.select`
   font-family: "Lexend", sans-serif;
   font-weight: 200;
   font-size: 1.5vh;
-  &:focus {
+  background: rgba(255, 255, 255, 0.3);
+    &:focus {
     border-bottom: 2px solid black;
     box-shadow: none;
     border: none;
+    background: rgba(255, 255, 255, 0.3);
+
   }
   ${mobile({
     width: "90%",
@@ -323,14 +326,15 @@ const ProductPage = () => {
    for calling addProduct reducer and dispatching product along with quantity, color and a unique id*/
   const handleAddProductToCart = (e) => {
     e.preventDefault();
-    dispatch(
-      addProduct({
-        ...product,
-        quantity,
-        color,
-        uniqueId: uuidv4(),
-      })
-    );
+    color &&
+      dispatch(
+        addProduct({
+          ...product,
+          quantity,
+          color,
+          uniqueId: uuidv4(),
+        })
+      );
   };
 
   return (
@@ -374,12 +378,12 @@ const ProductPage = () => {
                 SELECT COLOR
               </option>
               {product?.colors.map((color) => (
-                <option key ={color}>{color.toUpperCase()}</option>
+                <option key={color}>{color.toUpperCase()}</option>
               ))}
             </Color>
           )}
           {/*if color is added then call handleAddProductToCart function */}
-          <AddToCartBtn onClick={color && handleAddProductToCart}>
+          <AddToCartBtn onClick={  handleAddProductToCart}>
             ADD TO CART
           </AddToCartBtn>
           {/*product description props */}
