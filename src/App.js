@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const user = useSelector((state) => state.user.currentUser);
   const registeration = useSelector((state) => state.user.registerationSuccess);
-  user ? console.log(user.username) : console.log("user is not logged in");
+  const registerDone = useSelector((state) => state.user.registerationDone);
 
   return (
     <Router>
@@ -30,9 +30,8 @@ function App() {
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route
           path="/register"
-          element={registeration ? <Products /> : <Register />}
+          element={registeration && registerDone ? <Products /> : <Register />}
         />
-        
       </Routes>
     </Router>
   );
