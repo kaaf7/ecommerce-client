@@ -6,6 +6,7 @@
 
 // import react
 import React from "react";
+
 // import Styled Components
 import styled from "styled-components";
 
@@ -13,9 +14,10 @@ import SentimentVeryDissatisfiedOutlinedIcon from "@mui/icons-material/Sentiment
 
 // import responsive Settings from responsive.js
 import { mobile, tablet } from "../responsive";
-// import cartItem component that will display purchased products
 
+// import cartItem component that will display purchased products
 import CartItem from "../Components/CartItem";
+
 // import navvbar component for navigation
 import { Navbar } from "../Components/Navbar";
 
@@ -24,6 +26,8 @@ import { useSelector } from "react-redux";
 
 // import responsive back button
 import ResBackButton from "../Components/ResBackButton";
+
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 // Container that contains all of the components
 const Container = styled.div`
@@ -66,7 +70,7 @@ const PurchasedItems = styled.div`
 // text for purchase information
 const Text = styled.p`
   font-weight: 500;
-  font-family: "Lendex", sans-serif;
+  font-family: "Lexend", sans-serif;
   margin-top: 0.1vh;
 
   ${mobile({
@@ -81,22 +85,17 @@ const Text = styled.p`
 `;
 
 // buy button
-const PurchaseButton = styled.button`
+const PurchaseButton = styled.div`
   width: 100%;
   height: 5vh;
-  padding: 3vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: "Lendex", sans-serif;
-  background-color: black;
+  font-family: "Lexend", sans-serif;
   font-weight: 100;
-  cursor: pointer;
-  color: white;
-  &:hover {
-    background-color: grey;
-  }
+  background-color: #ffffff;
+
   ${mobile({
     fontSize: "2vw",
   })}
@@ -113,7 +112,7 @@ const PurchaseForm = styled.div`
   right: 7.8125vw;
   top: 15vh;
   width: 30%;
-  height: 20vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -123,6 +122,7 @@ const PurchaseForm = styled.div`
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    height: "45vh",
   })}
   ${tablet({
     display: "flex",
@@ -140,7 +140,7 @@ const OrderDetails = styled.div`
 // order title
 const OrderTitle = styled.h2`
   margin-top: 0;
-  font-family: "Lendex", sans-serif;
+  font-family: "Lexend", sans-serif;
   font-size: 2vh;
   ${mobile({
     fontSize: "1vh",
@@ -163,6 +163,26 @@ const EmptyCartSign = styled.p`
   justify-content: center;
 `;
 
+const PayPalPaymentButton = styled(PayPalButtons)`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Lendex", sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  &:hover {
+  }
+  ${mobile({
+    fontSize: "2vw",
+    transform: " scale(.5)",
+  })}
+  ${tablet({
+    fontSize: "2vw",
+  })}
+`;
 const Cart = () => {
   // get cart state from redux Cart Slice
   const cart = useSelector((state) => state.cart);
@@ -204,7 +224,38 @@ const Cart = () => {
                   € {totalPrice > 50 ? totalPrice : totalPrice + shippingCost}
                 </Text>
               </OrderDetails>
-              <PurchaseButton>GO TO CHECKOUT</PurchaseButton>
+              <PurchaseButton>CHECK OUT WITH </PurchaseButton>
+              <PayPalScriptProvider options={{ "client-id": "test" }}>
+                <PayPalPaymentButton
+                  style={{ width: "1%" }}
+                  createOrder={(data, actions) => {
+                    return actions.order
+                      .create({
+                        purchase_units: [
+                          {
+                            amount: {
+                              value:
+                                totalPrice > 50
+                                  ? totalPrice
+                                  : totalPrice + shippingCost,
+                            },
+                          },
+                        ],
+                      })
+                      .then((orderId) => {
+                        // Your code here after create the order
+                        return orderId;
+                      });
+                  }}
+                  onApprove={function (data, actions) {
+                    return actions.order.capture().then(function () {
+                      // Your code here after capture the order
+                    });
+                  }}
+                >
+                  {" "}
+                </PayPalPaymentButton>
+              </PayPalScriptProvider>
             </PurchaseForm>
           )}
         </Wrapper>
