@@ -42,12 +42,11 @@ const favoritesSlice = createSlice({
       // set state favorites as favoritesArray
       state.favorites = favoritesArray;
       // set state quantity as favoritesArray's quantity
-      //state.quantity = favoritesArray.quantity;
-      state.favoriteId = action.payload.userId;
+      state.quantity = favoritesArray.quantity;
     },
     //addAndRemoveFavorite reducer is responsible for adding and removing favorites
     addAndRemoveFavorite: (state, action) => {
-       /* addTrigger a function that works a as toggle to
+      /* addTrigger a function that works a as toggle to
        trigger the useEffect in navbar when favorite is added*/
       const addTrigger = () => {
         if (state.favoriteAdded) {
