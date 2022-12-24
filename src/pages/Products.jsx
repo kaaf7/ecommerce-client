@@ -37,7 +37,6 @@ import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 // import responsive back button
 import ResBackButton from "../Components/ResBackButton";
 
-
 // all components container
 const Container = styled.div`
   background-color: #ffffff;
@@ -64,6 +63,8 @@ const Filter = styled.select`
   color: grey;
   font-weight: 200;
   font-family: "Lexend", sans-serif;
+  background: rgba(255, 255, 255, 0.3);
+
   &:focus {
     outline: none;
     margin-top: 0;
@@ -101,11 +102,16 @@ const Products = () => {
   return (
     <Container>
       <Navbar></Navbar>
-      
+
       <FilterWrapper>
         <FilterListOutlinedIcon />
-        <Filter name="colors" id="colors" onChange={handleFilters}>
-          <option selected disabled>
+        <Filter
+          defaultValue={"DEFAULT"}
+          name="colors"
+          id="style"
+          onChange={handleFilters}
+        >
+          <option value="DEFAULT" disabled>
             COLOR
           </option>
           <option>GREEN</option>
@@ -130,10 +136,8 @@ const Products = () => {
           <option>TROUSERS</option>
         </Filter>
         {category && (
-          <Filter name="category">
-            <option selected="selected" value={category}>
-              {category.toUpperCase()}
-            </option>
+          <Filter defaultValue={"DEFAULT"} name="category">
+            <option value={category}>{category.toUpperCase()}</option>
           </Filter>
         )}
         <Filter onChange={handleSort}>
@@ -146,7 +150,7 @@ const Products = () => {
       <Board></Board>
       <Explore></Explore>
       <Footer></Footer>
-      <ResBackButton/>
+      <ResBackButton />
     </Container>
   );
 };
