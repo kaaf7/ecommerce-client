@@ -39,16 +39,23 @@ const Container = styled.div`
   border-bottom: 1px solid lightgray;
   ${mobile({
     width: "100%",
-    height: "28vh",
+    height: "35vh",
+    marginTop: "13vh",
+  })}
+    ${tablet({
+    width: "100%",
+    height: "45vh",
     marginTop: "13vh",
   })}
 `;
 
 const Wrapper = styled.div`
   height: 100%;
-
+  position: relative;
   cursor: pointer;
 `;
+
+// video display
 const Video = styled.video`
   height: 90%;
 
@@ -60,11 +67,6 @@ const Video = styled.video`
     height: "100%",
   })}
 `;
-
-// video array
-const VideosArray = [Video1];
-// get random number between 0 and 3 to shoow video
-const randomVideo = Math.floor(Math.random() * 5);
 
 // audio controller container
 const AudioController = styled.div`
@@ -81,17 +83,18 @@ const AudioController = styled.div`
   justify-content: center;
   z-index: 1;
   cursor: pointer;
+  top: 5%;
+  left: 5%;
+  transform: translate(-50%, -50%);
   ${mobile({
-    left: "14%",
-    top: "35%",
-    width: ".5vw",
-    height: ".5vw",
+    display:"none"
   })}
   ${tablet({
-    left: "5%",
-    top: "15%",
-    width: "1.051vw",
-    height: "1.051vw",
+    left: "10%",
+    top: "5%",
+    
+    width: "1vw",
+    height: "1vw",
   })}
 `;
 
