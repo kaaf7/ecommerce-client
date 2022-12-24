@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -7,6 +11,7 @@ const userSlice = createSlice({
     loggedIn: false,
     isFetching: false,
     registerationSuccess: false,
+    registerationDone: false,
     error: false,
   },
   reducers: {
@@ -18,6 +23,7 @@ const userSlice = createSlice({
       state.error = false;
       state.currentUser = null;
       state.registerationSuccess = true;
+      state.registerationDone = true;
     },
     registerFailed: (state) => {
       state.isFetching = false;
@@ -26,7 +32,7 @@ const userSlice = createSlice({
       state.registerationSuccess = false;
     },
     registerDone: (state) => {
-      state.registerationSuccess = false;
+      state.registerationDone = false;
     },
 
     loginStart: (state) => {
@@ -50,6 +56,8 @@ const userSlice = createSlice({
       state.error = false;
       state.loggedIn = true;
     },
+
+    
   },
 });
 
