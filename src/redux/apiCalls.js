@@ -29,9 +29,9 @@ export const login = async (dispatch, user) => {
     const cart = await privateRequest.get(`/cart/find?id=${userId}`, {
       headers: { token: `${userToken}` },
     });
-
     dispatch(getFavorite(favorites.data));
     dispatch(getCart(cart.data));
+    window.location.reload();
   };
 
   // dispatch loginStart reducer
@@ -50,7 +50,7 @@ export const login = async (dispatch, user) => {
       try {
         unWrapData(userId, userToken);
       } catch (err) {
-        console.log("error");
+        console.log("data error");
       }
     }
   } catch (err) {
