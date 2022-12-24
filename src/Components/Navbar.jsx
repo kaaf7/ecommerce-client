@@ -16,9 +16,6 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 // import logout Icon from material UI
 import LogoutIcon from "@mui/icons-material/Logout";
 
-// import profile Icon from material UI
-import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
-
 // import cart Icon from material UI
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 
@@ -44,7 +41,7 @@ import { useNavigate } from "react-router-dom";
 import { publicRequest } from "../services";
 
 // import responsive Settings from responsive.js
-import { mobile, tablet } from "../responsive";
+import { mobile, tablet, mcBook } from "../responsive";
 
 // import useDispatch activate redux reducers and useSelector to get state
 import { useDispatch, useSelector } from "react-redux";
@@ -194,8 +191,8 @@ const MenuItem = styled.div`
   transition: 0.2s;
   cursor: pointer;
   flex: 1;
-  ${mobile({ fontSize: "1vh" })}
-  ${tablet({ fontSize: "1vh" })}
+  ${mobile({ fontSize: "1vh", marginRight: ".0,5vw" })}
+  ${tablet({ fontSize: "1vh", marginRight: "1vw", marginLeft: "1vw" })}
 
   :hover {
     color: #000000;
@@ -299,6 +296,12 @@ const SearchResultContainer = styled.li`
   border-radius: 10px;
   outline: 0.1px solid lightgrey;
   background-color: white;
+  ${tablet({
+    width: "43%",
+  })}
+  ${mcBook({
+    width: "46.5%",
+  })}
 `;
 
 // Search results images
@@ -346,6 +349,7 @@ export const Navbar = () => {
 
   // cart state from cart slice
   const cart = useSelector((state) => state.cart);
+
   // productAdded state to check if product is added to cart
   const productAdded = useSelector((state) => state.cart?.productAdded);
   // productAdded state to check if product is added to cart
@@ -355,6 +359,7 @@ export const Navbar = () => {
 
   // favorites state from favorite slice
   const favorites = useSelector((state) => state.favorite);
+
   // favoriteAdded state to check if favorite is added to favorite
   const favoriteAdded = useSelector((state) => state.favorite.favoriteAdded);
   // favoriteRemoved state to check if favorite is removed from favorite
@@ -372,8 +377,9 @@ export const Navbar = () => {
   const userId = user?._id;
   // logged in state from user reducer
   const loggedIn = useSelector((state) => state.user?.loggedIn);
+
   /* useEffect Hook to fetch Products from API using axios's public request 
-  without any dependencies */
+   with search dependency to get products for search bar */
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -382,39 +388,39 @@ export const Navbar = () => {
       } catch (err) {}
     };
     getProducts();
-  }, []);
+  }, [searchedProduct]);
 
-  /* useEffect Hook to fetch update cart */
+  /* useEffect Hook to update cart 
+  with productAdded and productRemoved as dependencies */
   useEffect(() => {
     if ((user && productAdded) || (user && productRemoved)) {
-      const updateCartAndGetData = async () => {
+      const updateNewCart = async () => {
         try {
           const updatedCart = await dispatch(updateCart(cart));
-          const CartPayload = unwrapResult(updatedCart);
-          console.log(CartPayload);
-        } catch (err) {
-          console.log("cart is not updated");
-        }
-      };
-      updateCartAndGetData();
-    }
-  }, []);
-
-  /* useEffect Hook to fetch update favorites with dependencies */
-  useEffect(() => {
-    if ((user && favoriteAdded) || (user && favoriteRemoved)) {
-      const updateFavoriteAndGetData = async () => {
-        const updatedFavorites = await dispatch(updateFavorite(favorites));
-        try {
-          const Favoritepayload = unwrapResult(updatedFavorites);
-          console.log(Favoritepayload);
+          const unWrappedCart = unwrapResult(updatedCart);
         } catch (err) {
           console.log("favorite is not updated");
         }
       };
-      updateFavoriteAndGetData();
+      updateNewCart();
     }
-  }, []);
+  }, [productAdded, productRemoved]);
+
+  /* useEffect Hook to update favorites 
+   with favoriteAdded and favoriteRemoved as dependencies */
+  useEffect(() => {
+    if ((user && favoriteAdded) || (user && favoriteRemoved)) {
+      const updateFav = async () => {
+        try {
+          const updatedFavorites = await dispatch(updateFavorite(favorites));
+          const unWrappedFav = unwrapResult(updatedFavorites);
+        } catch (err) {
+          console.log("favorite is not updated");
+        }
+      };
+      updateFav();
+    }
+  }, [favoriteAdded, favoriteRemoved]);
 
   // NavigateDir depends on custome directory*/
   const NavigateDir = (directory) => {
@@ -502,11 +508,11 @@ export const Navbar = () => {
                   {searchFilter.map((product, i) => (
                     <SearchText
                       key={i}
-                      onClick={() => openProduct(product._id)}
+                      onClick={() => openProduct(product?._id)}
                     >
                       {" "}
                       {/* show first image next to product title*/}
-                      <SearchResultImage src={product.images[0]} />
+                      <SearchResultImage src={product?.images[0]} />
                       {/* product title prop*/}
                       {product.productTitle}
                     </SearchText>
