@@ -46,7 +46,7 @@ import { mobile } from "../responsive";
 const Container = styled.div`
   overflow: hidden;
   ${mobile({
-    height:"350%"
+    height: "350%"
   })}
 `;
 // items Werapper
