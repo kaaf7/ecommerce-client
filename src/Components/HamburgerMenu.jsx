@@ -1,15 +1,23 @@
+/* * 👇
+ *This is Hamburger Menu,
+ *It is created and styled with Styled Components
+ *It will contain categories and other information
+ */
+// import React
 import { React, useState } from "react";
 
+// import Styled Components
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 // import responsive Settings from responsive.js
 import { mobile } from "../responsive";
 
+// import NavLink for navigation
+import { NavLink } from "react-router-dom";
+
 const Container = styled.div`
   display: none;
   height: 90%;
-
   ${mobile({
     display: "flex",
     justifyContent: "center",
@@ -27,7 +35,7 @@ const MenuLabel = styled.label`
   border-radius: 20%;
   height: 2rem;
   width: 2rem;
-  margin-left:0;
+  margin-left: 0;
   cursor: pointer;
   z-index: 1000;
   text-align: center;
@@ -44,7 +52,6 @@ const NavBackground = styled.div`
   transform: ${(props) => (props.clicked ? "scale(80)" : "scale(0)")};
   transition: transform 0.6s;
 `;
-
 const Icon = styled.span`
   position: fixed;
   background-color: ${(props) => (props.clicked ? "transparent" : "black")};
