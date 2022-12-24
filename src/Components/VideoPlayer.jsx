@@ -18,7 +18,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 //import responsive Settings from responsive.js
-import { mobile, tablet } from "../responsive";
+import { mobile, tablet, mcBook } from "../responsive";
 
 import Video1 from "../videos/Video_1.mp4";
 
@@ -42,7 +42,7 @@ const Container = styled.div`
     height: "35vh",
     marginTop: "13vh",
   })}
-    ${tablet({
+  ${tablet({
     width: "100%",
     height: "45vh",
     marginTop: "13vh",
@@ -87,12 +87,19 @@ const AudioController = styled.div`
   left: 5%;
   transform: translate(-50%, -50%);
   ${mobile({
-    display:"none"
+    display: "none",
   })}
   ${tablet({
     left: "10%",
     top: "5%",
-    
+
+    width: "1vw",
+    height: "1vw",
+  })}
+  ${mcBook({
+    left: "10%",
+    top: "5%",
+
     width: "1vw",
     height: "1vw",
   })}
