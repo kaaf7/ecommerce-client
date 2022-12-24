@@ -19,15 +19,20 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 // favorite badeg imported from mui
 import Badge from "@mui/material/Badge";
 // import responsive Settings from responsive.js
-import { mobile,tablet } from "../responsive";
+import { mobile, tablet } from "../responsive";
 
 // all Items Container
-const Container = styled.div``;
+const Container = styled.div`
+  position: relative;
+`;
+
+// image and and heart button container
+const ImageContainer = styled.div``;
 
 // Main Card Container
 const Card = styled.img`
-  width: 10vw;
-  height: 30vh;
+  width: 10rem;
+  height: 15rem;
   border-radius: 1.576vw;
   border: none;
   cursor: pointer;
@@ -36,7 +41,7 @@ const Card = styled.img`
     height: "30vw",
     borderRadius: "1.5vw",
   })}
-   ${tablet({
+  ${tablet({
     width: "20vw",
     height: "30vw",
     borderRadius: "1.5vw",
@@ -45,34 +50,28 @@ const Card = styled.img`
 
 // Heart Sign Container
 const ProductHeart = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10%;
-  margin-top: 15%;
-  width: 0.263vw;
-  height: 0.263vw;
-  opacity: 1;
-  border-radius: 50%;
+  width: 2vw;
+  height: 2vw;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
   transition: 1s;
   cursor: pointer;
   :hover {
     transition: 1s;
-    transform: scale(1.3);
   }
 
   ${mobile({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: "11%"
   })}
-    ${tablet({
+  ${tablet({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: "11%"
   })}
 `;
 
@@ -109,25 +108,27 @@ const FavoriteCard = ({ product }) => {
   };
   return (
     <Container>
-      <ProductHeart onClick={handleFavorite}>
-        {" "}
-        <Badge badgeContent={0} color="error">
-          {/* if the product does not exist  the heart wil turn red,
+      <ImageContainer>
+        <ProductHeart onClick={handleFavorite}>
+          {" "}
+          <Badge badgeContent={0} color="error">
+            {/* if the product does not exist  the heart wil turn red,
            but if it does it will turn grey*/}
-          <FavoriteIcon
-            sx={doesNotExist ? { color: "#ce1d1df5" } : { color: "darkgrey" }}
-          />
-        </Badge>
-      </ProductHeart>
-      {/* onClick open product page*/}
-      <Card
-        onClick={() => openProduct(product?._id)}
-        /* on mouse hover set 2nd image as main*/
-        onMouseEnter={(e) => (e.target.src = product?.images[1])}
-        /* on normal state set 1st image as main*/
-        onMouseLeave={(e) => (e.target.src = product?.images[0])}
-        src={product?.images[0]}
-      ></Card>
+            <FavoriteIcon
+              sx={doesNotExist ? { color: "#ce1d1df5" } : { color: "darkgrey" }}
+            />
+          </Badge>
+        </ProductHeart>
+        {/* onClick open product page*/}
+        <Card
+          onClick={() => openProduct(product?._id)}
+          /* on mouse hover set 2nd image as main*/
+          onMouseEnter={(e) => (e.target.src = product?.images[1])}
+          /* on normal state set 1st image as main*/
+          onMouseLeave={(e) => (e.target.src = product?.images[0])}
+          src={product?.images[0]}
+        ></Card>
+      </ImageContainer>
     </Container>
   );
 };
