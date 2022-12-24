@@ -70,12 +70,12 @@ const Text = styled.p`
   margin-top: 0.1vh;
 
   ${mobile({
-    fontSize: "1.5vw",
+    fontSize: "1vh",
     flexDirection: "column",
   })}
 
   ${tablet({
-    fontSize: "1.5vw",
+    fontSize: "1vh",
     flexDirection: "column",
   })}
 `;
@@ -84,6 +84,11 @@ const Text = styled.p`
 const PurchaseButton = styled.button`
   width: 100%;
   height: 5vh;
+  padding: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   font-family: "Lendex", sans-serif;
   background-color: black;
   font-weight: 100;
@@ -164,7 +169,7 @@ const Cart = () => {
   // get cart prodts array
   const cartProducts = cart.products;
   // round total from cart state price
-  const totalPrice = Math.round(cart.price);
+  const totalPrice = (Math.round(cart.price * 100) / 100).toFixed(2);
   // shipping cost
   const shippingCost = 5;
 
@@ -205,7 +210,7 @@ const Cart = () => {
         </Wrapper>
       ) : (
         <EmptyCartSign>
-          CART IS EMPTY 
+          CART IS EMPTY
           <SentimentVeryDissatisfiedOutlinedIcon />
         </EmptyCartSign>
       )}
