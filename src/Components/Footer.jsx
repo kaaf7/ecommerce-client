@@ -11,7 +11,7 @@ import React from "react";
 import styled from "styled-components";
 
 //import responsive Settings from responsive.js
-import { mobile } from "../responsive";
+import { mobile, mcBook } from "../responsive";
 
 // all Components Container
 const Container = styled.div`
@@ -24,7 +24,12 @@ const Container = styled.div`
     display: "flex",
     justifyContent: "space-between",
     height: "45vh",
-    marginTop:"5vh"
+    marginTop: "5vh",
+  })}
+  ${mcBook({
+    display: "flex",
+    justifyContent: "space-between",
+    height: "45vh",
   })}
 `;
 // text items where all the info is displayed
