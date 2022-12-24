@@ -3,13 +3,10 @@
  *Created with redux toolkit
  *it is responsible for updating favorites list products and quantity
  */
-
 // import createSlice and asyncthunk functions
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import private requests and current user if exists
 import { privateRequest, currentUser } from "../services";
-// get current user Id if it exists
-const userId = currentUser?._id;
 
 /* updateFavorites createAsyncThunk function 
 which is responsible for updating favorites products and quantity
@@ -17,11 +14,9 @@ with action payload as a new favorites whenever product is added or removed */
 export const updateFavorite = createAsyncThunk(
   "favorite/updateFavorite",
   async (favorite, { rejectWithValue }) => {
+    const url = `favorite/updatefavorite?id=${currentUser._id}`;
     try {
-      const res = await privateRequest.put(
-        `favorite/updatefavorite?id=${userId}`,
-        favorite
-      );
+      const res = await privateRequest.put(url, favorite);
       const updatedFavorites = res.data;
       return updatedFavorites;
     } catch (err) {
@@ -47,28 +42,47 @@ const favoritesSlice = createSlice({
       // set state favorites as favoritesArray
       state.favorites = favoritesArray;
       // set state quantity as favoritesArray's quantity
-      // state.quantity = favoritesArray.quantity;
+      //state.quantity = favoritesArray.quantity;
+      state.favoriteId = action.payload.userId;
     },
     //addAndRemoveFavorite reducer is responsible for adding and removing favorites
     addAndRemoveFavorite: (state, action) => {
-      // check if favorites does not exist in favorites array,
+       /* addTrigger a function that works a as toggle to
+       trigger the useEffect in navbar when favorite is added*/
+      const addTrigger = () => {
+        if (state.favoriteAdded) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+      /* removeTrigger a function that works a as toggle to
+       trigger the useEffect in navbar when favorite is removed*/
+      const removeTrigger = () => {
+        if (state.favoriteRemoved) {
+          return false;
+        } else {
+          return true;
+        }
+      };
 
+      // check if favorites does not exist in favorites array,
       const doesFavoritExist =
         state.favorites.findIndex(
           (favorite) => favorite._id === action.payload._id
         ) !== -1;
-      //if it does not exist then add it but if it exists then remove it
+      // if it does not exist then add it but if it exists then remove it
       if (!doesFavoritExist) {
         state.favorites.push(action.payload);
-       // state.quantity += 1;
-        state.favoriteAdded = true;
-        state.favoriteRemoved = false;
+        // state.quantity += 1;
+        state.favoriteAdded = addTrigger();
+        state.favoriteRemoved = removeTrigger();
       } else {
         let updatedFavorites = state.favorites.filter(
           (favorite) => favorite._id !== action.payload._id
         );
         state.favorites = updatedFavorites;
-        //state.quantity -= 1;
+        state.quantity -= 1;
         state.favoriteAdded = false;
         state.favoriteRemoved = true;
       }
@@ -82,14 +96,13 @@ const favoritesSlice = createSlice({
       state.isLoading = true;
     },
     [updateFavorite.fulfilled]: (state, action) => {
-     // state.quantity = action.payload.quantity;
       state.favorites = action.payload.favorites;
       state.isLoading = false;
       state.isSuccess = true;
     },
     [updateFavorite.rejected]: (state, action) => {
-      state.isLoading = false;
       state.message = action.payload;
+      state.isLoading = false;
       state.isSuccess = false;
     },
   },
