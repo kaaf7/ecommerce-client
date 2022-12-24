@@ -55,7 +55,6 @@ const cartSlice = createSlice({
         return acc + product.price;
       }, 0);
       state.price = sumPrice;
-      state.cartId = action.payload.userId;
     },
     // addProduct is a reducer responsible for adding  products to cart
     addProduct: (state, action) => {
