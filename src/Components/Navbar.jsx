@@ -398,6 +398,8 @@ export const Navbar = () => {
         try {
           const updatedCart = await dispatch(updateCart(cart));
           const unWrappedCart = unwrapResult(updatedCart);
+          console.log(unWrappedCart);
+          console.log(cart);
         } catch (err) {
           console.log("favorite is not updated");
         }
