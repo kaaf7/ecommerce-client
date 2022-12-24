@@ -6,9 +6,6 @@
 // import useState Hook from React
 import { useState } from "react";
 
-// uselocation to get page lcoation
-import { useLocation } from "react-router-dom";
-
 // import styled Components
 import styled from "styled-components";
 
@@ -21,8 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 // import login function from apiCalls
 import { login } from "../redux/apiCalls";
-
-import { useEffect } from "react";
 
 // import responsive back button
 import ResBackButton from "../Components/ResBackButton";
@@ -111,8 +106,6 @@ const Login = () => {
     e.preventDefault();
     login(dispatch, { username, password });
   };
-
-
 
   return (
     <Container>
