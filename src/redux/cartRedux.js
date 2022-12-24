@@ -8,6 +8,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import private requests and current user if exists
 import { privateRequest, currentUser } from "../services";
+
 // get current userId if it exists
 const userId = currentUser?._id;
 
@@ -17,6 +18,7 @@ with action payload as a new cart whenever product is added or removed */
 export const updateCart = createAsyncThunk(
   "cart/updateCart",
   async (cart, { rejectWithValue }) => {
+    // current User from user reducer
     try {
       const res = await privateRequest.put(`/cart/update?id=${userId}`, cart);
       const updatedCart = res.data;
@@ -33,7 +35,7 @@ const cartSlice = createSlice({
     products: [],
     quantity: 0,
     price: 0,
-    productAdded: false,
+    productAdded: true,
     productRemoved: false,
     isLoading: false,
     isSuccess: false,
@@ -47,25 +49,42 @@ const cartSlice = createSlice({
       // set state products as product array
       state.products = productsArray;
       // set quanitity as products quantity
-      //state.quantity = productsArray.quantity;
+      state.quantity = productsArray.quantity;
       // get sum price by summing all prices inside array using reduce array method
       let sumPrice = productsArray.reduce((acc, product) => {
         return acc + product.price;
       }, 0);
       state.price = sumPrice;
+      state.cartId = action.payload.userId;
     },
     // addProduct is a reducer responsible for adding  products to cart
     addProduct: (state, action) => {
       // push action payload which is product into state products array
       state.products.push(action.payload);
       // increase state quanity by 1
-      // state.quantity += 1;
+      state.quantity += 1;
       // add the new added product price into the existing sum price
       state.price += action.payload.price;
-      // product added is true
-      state.productAdded = true;
-      // product removed is false
-      state.productRemoved = false;
+      /* addTrigger a function that works a as toggle to
+       trigger the useEffect when product is added*/
+      const addTrigger = () => {
+        if (state.productAdded) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+      /* removeTrigger a function that works a as toggle to
+       trigger the useEffect when product is removed*/
+      const removeTrigger = () => {
+        if (state.productRemoved) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+      state.productAdded = addTrigger();
+      state.productRemoved = removeTrigger();
     },
     // removeProduct is a reducer responsive for remove products from cart
     removeProduct: (state, action) => {
@@ -76,13 +95,29 @@ const cartSlice = createSlice({
       // assign state products as updatedProducts after product removal
       state.products = updatedProducts;
       // subtract 1 from quantity
-      //state.quantity -= 1;
+      state.quantity -= 1;
       // subtract product's price from total price sum
       state.price -= action.payload.price;
-      // product added is false
-      state.productAdded = false;
-      // product removed is true
-      state.productRemoved = true;
+      /* addTrigger a function that works a as toggle to
+       trigger the useEffect in navbar when product is added*/
+      const addTrigger = () => {
+        if (state.productAdded) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+      /* removeTrigger a function that works a as toggle to
+       trigger the useEffect in navbar when product is removed*/
+      const removeTrigger = () => {
+        if (state.productRemoved) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+      state.productRemoved = removeTrigger();
+      state.productAdded = addTrigger();
     },
   },
   /* update cart extra reducer to updatecart which is an createAsyncThunk function it 
@@ -98,6 +133,7 @@ const cartSlice = createSlice({
     },
     [updateCart.rejected]: (state, action) => {
       state.message = action.payload;
+      state.isLoading = false;
       state.isSuccess = false;
     },
   },
