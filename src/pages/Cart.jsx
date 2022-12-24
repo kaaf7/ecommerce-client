@@ -234,6 +234,7 @@ const Cart = () => {
                         purchase_units: [
                           {
                             amount: {
+                              currency:"EUR",
                               value:
                                 totalPrice > 50
                                   ? totalPrice
