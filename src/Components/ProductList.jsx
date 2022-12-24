@@ -18,7 +18,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 
 // import responsive Settings from responsive.js
-import { mobile, tablet } from "../responsive";
+import { mobile, tablet, mcBook } from "../responsive";
 
 // import axios request services
 import { publicRequest } from "../services";
@@ -46,6 +46,15 @@ const Container = styled.div`
     gridTemplateColumns: "repeat(2, 1fr);",
     justifyContent: "center",
     alignItems: "center",
+  })}
+  
+  ${mcBook({
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr);",
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: "7.882vw",
+    marginRight: "7.882vw",
   })}
 `;
 
