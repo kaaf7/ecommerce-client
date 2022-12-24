@@ -23,7 +23,7 @@ import { addAndRemoveFavorite } from "../redux/favoriteRedux";
 import Badge from "@mui/material/Badge";
 
 // import responsive Settings from responsive.js
-import { mobile, tablet } from "../responsive";
+import { mobile, tablet,mcBook } from "../responsive";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -83,9 +83,13 @@ const ProductInfoContainer = styled.div`
   text-align: start;
   flex-direction: column;
   color: black;
-  font-size: 0.631vw;
+  font-size: 0.5vw;
   ${mobile({
     width: "100%",
+  })}
+  ${tablet({
+    width: "100%",
+    
   })}
 `;
 
@@ -102,6 +106,11 @@ const ProductInfo = styled.p`
     marginTop: "2vh",
     width: "100%",
   })}
+  ${tablet({
+    fontSize: "1vw",
+    marginTop: "2vh",
+    width: "100%",
+  })}
 `;
 
 // product price
@@ -115,6 +124,9 @@ const ProductPrice = styled.p`
   margin-top: 0;
   ${mobile({
     fontSize: "2vw",
+  })}
+  ${tablet({
+    fontSize: "1.5vw",
   })}
 `;
 
@@ -145,7 +157,6 @@ const ProductHeart = styled.div`
   position: absolute;
   top: 90%;
   left: 85%;
-  transform-origin: center;
   transform: translate(-50%, -50%);
   transition: 1s;
 
@@ -166,7 +177,15 @@ const ProductHeart = styled.div`
     width: "3vw",
     height: "3vw",
     top: "50%",
-    left: "50%",
+    left: "80%",
+    position: "absolute",
+    transform: "translate(-50%, -50%)",
+  })}
+   ${mcBook({
+    width: "3vw",
+    height: "3vw",
+    top: "90%",
+    left: "80%",
     position: "absolute",
     transform: "translate(-50%, -50%)",
   })}
