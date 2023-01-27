@@ -82,10 +82,10 @@ const Products = () => {
   const [sort, setSort] = useState("descending");
   // get location to determine category
   const location = useLocation();
-  // get cateogory using location
+  // get category using location
   const category = location.pathname.split("/")[2];
 
-  /* handleFilters funtion that will use filters name as value to 
+  /* handleFilters function that will use filters name as value to 
   setFilters and then add old filters to new ones using spread ope */
   const handleFilters = (e) => {
     const value = e.target.value;
