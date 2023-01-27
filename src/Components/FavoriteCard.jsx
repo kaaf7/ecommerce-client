@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAndRemoveFavorite } from "../redux/favoriteRedux";
 // favorite icon imported from mui
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// favorite badeg imported from mui
+// favorite badge imported from mui
 import Badge from "@mui/material/Badge";
 // import responsive Settings from responsive.js
 import { mobile, tablet } from "../responsive";
@@ -89,7 +89,7 @@ const FavoriteCard = ({ product }) => {
   // activate navigate to navigate through pages
   const navigate = useNavigate();
 
-  /* handleFavorite function is resposible 
+  /* handleFavorite function is responsible 
    for dispatching addAndRemoveFavorite reducer with favoriteProduct */
   const handleFavorite = (e) => {
     e.preventDefault();
