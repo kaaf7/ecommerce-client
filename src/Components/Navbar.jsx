@@ -260,7 +260,7 @@ const SearchContainer = styled.div`
   flex-direction: flex-start;
 `;
 
-// Searchbar Component
+// Search bar Component
 const SearchInput = styled.input`
   border-bottom: 0.1px solid lightgrey;
   border-top: none;
@@ -354,7 +354,7 @@ export const Navbar = () => {
   const productAdded = useSelector((state) => state.cart?.productAdded);
   // productAdded state to check if product is added to cart
   const productRemoved = useSelector((state) => state.cart?.productRemoved);
-  // cart quantity state from reducer by measureing cart array length
+  // cart quantity state from reducer by measuring cart array length
   const cartQuantity = useSelector((state) => state.cart.products?.length);
 
   // favorites state from favorite slice
@@ -366,7 +366,7 @@ export const Navbar = () => {
   const favoriteRemoved = useSelector(
     (state) => state.favorite.favoriteRemoved
   );
-  // favorites quanitity from reducer by measureing favorites array length
+  // favorites quantity from reducer by measuring favorites array length
   const favoritesQuantity = useSelector(
     (state) => state.favorite.favorites?.length
   );
@@ -398,8 +398,7 @@ export const Navbar = () => {
         try {
           const updatedCart = await dispatch(updateCart(cart));
           const unWrappedCart = unwrapResult(updatedCart);
-          console.log(unWrappedCart);
-          console.log(cart);
+
         } catch (err) {
           console.log("favorite is not updated");
         }
@@ -424,7 +423,7 @@ export const Navbar = () => {
     }
   }, [favoriteAdded, favoriteRemoved]);
 
-  // NavigateDir depends on custome directory*/
+  // NavigateDir depends on custom directory*/
   const NavigateDir = (directory) => {
     navigate(directory);
   };
@@ -435,7 +434,7 @@ export const Navbar = () => {
     setSearchedProducts("");
   };
 
-  // search filter based on prodict title name if it includes any of the input letters
+  // search filter based on product title name if it includes any of the input letters
   const searchFilter = products
     .filter((product) => {
       return product.productTitle.toLowerCase().includes(searchedProduct);
@@ -504,7 +503,7 @@ export const Navbar = () => {
                 placeholder="Search.."
               ></SearchInput>
 
-              {/* if product search was initiated than show the result using array map mathod*/}
+              {/* if product search was initiated than show the result using array map method*/}
               {searchedProduct && (
                 <SearchResultContainer>
                   {searchFilter.map((product, i) => (
