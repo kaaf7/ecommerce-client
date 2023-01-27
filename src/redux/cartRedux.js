@@ -4,7 +4,7 @@
  *it is responsible for updating cart products and quantity
  */
 
-// import createSlice and asyncthunk functions
+// import createSlice and asyncThunk functions
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import private requests and current user if exists
 import { privateRequest, currentUser } from "../services";
@@ -28,7 +28,7 @@ export const updateCart = createAsyncThunk(
     }
   }
 );
-// cartSlice with intialstate of no products and price is 0
+// cartSlice with initial of no products and price is 0
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -48,7 +48,7 @@ const cartSlice = createSlice({
       const productsArray = [...action.payload.products];
       // set state products as product array
       state.products = productsArray;
-      // set quanitity as products quantity
+      // set quantity as products quantity
       state.quantity = productsArray.quantity;
       // get sum price by summing all prices inside array using reduce array method
       let sumPrice = productsArray.reduce((acc, product) => {
@@ -60,7 +60,7 @@ const cartSlice = createSlice({
     addProduct: (state, action) => {
       // push action payload which is product into state products array
       state.products.push(action.payload);
-      // increase state quanity by 1
+      // increase state quantity by 1
       state.quantity += 1;
       // add the new added product price into the existing sum price
       state.price += action.payload.price;
@@ -119,7 +119,7 @@ const cartSlice = createSlice({
       state.productAdded = addTrigger();
     },
   },
-  /* update cart extra reducer to updatecart which is an createAsyncThunk function it 
+  /* update cart extra reducer to update cart which is an createAsyncThunk function it 
   will update cart on DB with every change happens either product is added or removed*/
   extraReducers: {
     [updateCart.pending]: (state, action) => {
