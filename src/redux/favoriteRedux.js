@@ -3,7 +3,7 @@
  *Created with redux toolkit
  *it is responsible for updating favorites list products and quantity
  */
-// import createSlice and asyncthunk functions
+// import createSlice and asyncThunk functions
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import private requests and current user if exists
 import { privateRequest, currentUser } from "../services";
