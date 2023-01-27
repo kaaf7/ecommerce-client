@@ -89,7 +89,7 @@ const Explore = () => {
   const navigate = useNavigate();
 
   /* * NavigateDir function that changed 
-  page based on custome directory as an argument*/
+  page based on custom directory as an argument*/
   const NavigateDir = (directory) => {
     navigate(directory);
   };
