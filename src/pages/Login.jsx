@@ -88,9 +88,9 @@ const ErrorText = styled.p`
 `;
 
 const Login = () => {
-  // disptach to call reducers
+  // dispatch to call reducers
   const dispatch = useDispatch();
-  //usenavigate to switch pages
+  //useNavigate to switch pages
   const navigate = useNavigate();
   // login error state
   const loginError = useSelector((state) => state.user.error);
@@ -100,7 +100,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // handleLogin function that will execute login function by dispatching username and pasword
+  // handleLogin function that will execute login function by dispatching username and password
   const handleLogin = (e) => {
     // prevent refreshing the page when clicked
     e.preventDefault();
