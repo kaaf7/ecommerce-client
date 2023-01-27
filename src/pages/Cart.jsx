@@ -1,7 +1,7 @@
 /* * 👇
  *This is Cart Page
  *Created and styled with Styled Component
- *It will display the purchased items inform of Cartitem compoCFnent
+ *It will display the purchased items inform of cartItem Component
  */
 
 // import react
@@ -18,7 +18,7 @@ import { mobile, tablet } from "../responsive";
 // import cartItem component that will display purchased products
 import CartItem from "../Components/CartItem";
 
-// import navvbar component for navigation
+// import Navbar component for navigation
 import { Navbar } from "../Components/Navbar";
 
 // import useSelector to get states from redux slices
@@ -186,7 +186,7 @@ const PayPalPaymentButton = styled(PayPalButtons)`
 const Cart = () => {
   // get cart state from redux Cart Slice
   const cart = useSelector((state) => state.cart);
-  // get cart prodts array
+  // get cart products array
   const cartProducts = cart.products;
   // round total from cart state price
   const totalPrice = (Math.round(cart.price * 100) / 100).toFixed(2);
@@ -199,7 +199,7 @@ const Cart = () => {
 
       {cartProducts?.length > 0 ? (
         <Wrapper>
-          {/* mapp all purchased products into CartItem component*/}
+          {/* map all purchased products into CartItem component*/}
           <PurchasedItems>
             {cartProducts?.map((product) => (
               <CartItem key={product.uniqueId} purchasedProduct={product} />
