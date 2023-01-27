@@ -1,7 +1,7 @@
 /* *👇
  *This is a Product List  Component
  *Styled with Styled Components
- *It will show a grid of all products that are displyed Inside of Product Cards
+ *It will show a grid of all products that are displayed Inside of Product Cards
  *It will be displayed in products page based on categories like women's cloths or men's
  */
 
@@ -88,7 +88,7 @@ const ProductList = ({ filters, cat, sort }) => {
     getProducts();
   }, [cat]);
 
-  // useEffect to filter products according to products, catrgory, filters
+  // useEffect to filter products according to products, category, filters
   useEffect(() => {
     if (filters) {
       setFilteredProducts(
