@@ -1,7 +1,7 @@
 /* * 👇 This is Board display it will display random products Component  
 created and styled with Styled Component it will display 
 3 random product photos and a fashion quote	
-cretaed and styled with Styled Component 
+created and styled with Styled Component 
 */
 
 // import react
@@ -166,8 +166,8 @@ const Board = () => {
           .map((quote) => (
             <Quote key={quote}>{quote.toUpperCase()}</Quote>
           ))}
-        {/* *using map, slice, and map to generate randomm 3 products images from 
-        poroducts array, when clicked navigates to the specific product displayed*/}
+        {/* *using map, slice, and map to generate random 3 products images from 
+        products array, when clicked navigates to the specific product displayed*/}
         {products
           .sort(() => 0.5 - Math.random())
           .slice(0, 3)
