@@ -19,7 +19,7 @@ import { Navbar } from "../Components/Navbar";
 // import useLocation to get product id
 import { useLocation } from "react-router-dom";
 
-// import addProdt redcer from cart Slice
+// import add products reducer from cart Slice
 import { addProduct } from "../redux/cartRedux";
 
 // import useDispatch to call reducers
