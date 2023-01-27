@@ -1,7 +1,7 @@
 /* * 👇
  *This is a Product Component
  *It will contain all the product image and info like price, size, and color
- *It will be desplayed in Hightlights Component and also in ProductsPage
+ *It will be displayed in Highlights Component and also in ProductsPage
  */
 
 // import React
@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 // import Favorite Icon from material UI
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-// addAndRemoveFavorite reudcer from favorite slice
+// addAndRemoveFavorite reducer from favorite slice
 import { addAndRemoveFavorite } from "../redux/favoriteRedux";
 
 // import Cart Badge from material UI
