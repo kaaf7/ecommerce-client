@@ -45,7 +45,7 @@ const Item = styled.div`
   })}
 `;
 
-// left itemns container
+// left items container
 const LeftItems = styled.div`
   margin-left: 5.255vw;
   height: 150%;
