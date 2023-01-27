@@ -145,7 +145,7 @@ const Indication = styled.p`
   })}
 `;
 
-// passing purchsedProduct in CartItem component to change its props in Cart Page
+// passing purchased Product in CartItem component to change its props in Cart Page
 const CartItem = ({ purchasedProduct }) => {
   // activate useDispatch
   const dispatch = useDispatch();
@@ -170,7 +170,7 @@ const CartItem = ({ purchasedProduct }) => {
     <div>
       {" "}
       <PurchasedItem>
-        {/*open Product page with openProduct fucntion*/}
+        {/*open Product page with openProduct function*/}
         <PurchasedItemPhoto
           onClick={() => openProduct(purchasedProduct._id)}
           src={purchasedProduct?.images[0]}
