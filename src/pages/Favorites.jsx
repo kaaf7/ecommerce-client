@@ -6,7 +6,7 @@
 
 // import Styled Components
 import styled from "styled-components";
-// import navvbar component for navigation
+// import Navbar component for navigation
 import { Navbar } from "../Components/Navbar";
 // import useSelector to get states from redux slices
 import { useSelector } from "react-redux";
