@@ -10,7 +10,7 @@ import styled from "styled-components";
 // useDispatch to call register reducers
 import { useDispatch, useSelector } from "react-redux";
 
-// imprt responsive design
+// import responsive design
 import { mobile } from "../responsive";
 
 // import react useState
@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 25%;
-  heigh: 100vh;
+  height: 100vh;
   padding: 20px;
   background-color: white;
 
