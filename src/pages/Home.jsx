@@ -49,7 +49,7 @@ const Container = styled.div`
     height: "350%"
   })}
 `;
-// items Werapper
+// items Wrapper
 const Wrapper = styled.div`
   overflow: hidden;
 `;
