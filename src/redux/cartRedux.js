@@ -9,6 +9,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import private requests and current user if exists
 import { privateRequest, currentUser } from "../services";
 
+
 // get current userId if it exists
 const userId = currentUser?._id;
 
@@ -18,7 +19,6 @@ with action payload as a new cart whenever product is added or removed */
 export const updateCart = createAsyncThunk(
   "cart/updateCart",
   async (cart, { rejectWithValue }) => {
-    // current User from user reducer
     try {
       const res = await privateRequest.put(`/cart/update?id=${userId}`, cart);
       const updatedCart = res.data;
