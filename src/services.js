@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios from "axios"
+// require dotenv;
 const dotenv = require("dotenv");
 dotenv.config();
 const BASE_URL = process.env.BASE_URL;
